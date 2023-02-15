@@ -1,4 +1,4 @@
-package com.solvd;
+package com.solvd.navigator.main;
 
 public class Main {
     public static void main(String[] args) {
