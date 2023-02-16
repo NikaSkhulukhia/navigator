@@ -5,9 +5,12 @@
         <id column="idStreetLocation" property="idStreetLocation"/>
         <result column="idStreet" property="idStreet"/>
     </resultMap>
-    <select id="selectEntityById" resultMap="StreetLocationResult" resultType="resultMapStreetLocation">
+    <select id="selectEntityById" resultType="model.Street" resultMap="resultMapStreetLocation">
         SELECT * FROM StreetLocation
         WHERE idStreetLocation = #{id}
+    </select>
+    <select id="selectAllEntity" resultType="model.Street" resultMap="resultMapStreetLocation">
+        SELECT * from StreetLocation
     </select>
     <insert id="insertEntity">
         INSERT INTO StreetLocation()
