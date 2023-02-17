@@ -18,10 +18,10 @@
     <insert id="insertEntity">
         INSERT INTO Car () VALUES(#{idCar}, #{make}, #{model}, #{bodyType}, #{productionYear}, #{averageSpeed})
     </insert>
-    <delete id="deleteEntinty">
+    <delete id="deleteEntity">
         DELETE FROM Car WHERE idCar = #{id}
     </delete>
     <update id="updateEntity">
-        UPDATE Car SET idCar=#{idCar},  make=#{make}, model=#{model}, bodyType=#{bodyType}, productionYear=#{productionYear}, fuelType=#{fuelType}, averageSpeed=#{averageSpeed}  WHERE idCar= #{idCar}
+        UPDATE Car SET idCar=#{idCar},  make=#{make}, model=#{model}, bodyType=#{bodyType}, productionYear=#{productionYear}, averageSpeed=#{averageSpeed}  WHERE idCar= #{idCar}
     </update>
 </mapper>
