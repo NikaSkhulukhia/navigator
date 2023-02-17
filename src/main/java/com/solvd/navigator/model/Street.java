@@ -1,26 +1,28 @@
 package com.solvd.navigator.model;
 
-public class Street {
-    private Long idStreet;
-    private String name;
-    private Long idCity;
+import java.util.Objects;
 
-    public Street (String name, Long idCity){
+public class Street {
+    private int idStreet;
+    private String name;
+    private int idCity;
+
+    public Street (String name, int idCity){
         this.name=name;
         this.idCity=idCity;
     }
 
-    public Street(Long idStreet, String name, Long idCity){
+    public Street(int idStreet, String name, int idCity){
         this.idStreet=idStreet;
         this.name=name;
         this.idCity=idCity;
     }
 
-    public Long getIdStreet() {
+    public int getIdStreet() {
         return idStreet;
     }
 
-    public void setIdStreet(Long idStreet) {
+    public void setIdStreet(int idStreet) {
         this.idStreet = idStreet;
     }
 
@@ -32,12 +34,25 @@ public class Street {
         this.name = name;
     }
 
-    public Long getIdCity() {
+    public int getIdCity() {
         return idCity;
     }
 
-    public void setIdCity(Long idCity) {
+    public void setIdCity(int idCity) {
         this.idCity = idCity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Street street = (Street) o;
+        return idStreet == street.idStreet && idCity == street.idCity && Objects.equals(name, street.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idStreet, name, idCity);
     }
 
     @Override
