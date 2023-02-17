@@ -1,7 +1,7 @@
 package com.solvd.navigator.dao.mybatis;
 
-import com.solvd.navigator.dao.IStreetDao;
-import com.solvd.navigator.model.Street;
+import com.solvd.navigator.dao.IStreetLocationDao;
+import com.solvd.navigator.model.StreetLocation;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.logging.log4j.LogManager;
@@ -10,17 +10,17 @@ import org.apache.logging.log4j.Logger;
 import java.sql.SQLException;
 import java.util.List;
 
-public class IStreetServiceImpl implements IStreetDao {
-    private static final SqlSessionFactory SESSION_FACTORY = MyBatisUtil.getSqlSessionFactory();
-    private static final Logger LOGGER = LogManager.getLogger(IStreetServiceImpl.class);
-    Street street;
+public class StreetLocationImpl implements IStreetLocationDao {
+    private static final Logger LOGGER = LogManager.getLogger(StreetImpl.class);
+    private static final SqlSessionFactory SESSION_FACTORY = MyBatisUtil.getSqlSessionFactory;
+    StreetLocation streetLocation;
 
     @Override
-    public void insertEntity(Street entity) throws SQLException {
+    public void insertEntity(StreetLocation entity) throws SQLException {
         try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
-            IStreetDao iStreetDao = sqlSession.getMapper(IStreetDao.class);
+            IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
             try {
-                iStreetDao.insertEntity(entity);
+                iStreetLocationDao.insertEntity(entity);
                 sqlSession.commit();
             } catch (SQLException e) {
                 LOGGER.error("SQLException", e);
@@ -31,36 +31,36 @@ public class IStreetServiceImpl implements IStreetDao {
     }
 
     @Override
-    public Street selectEntityById(int id) throws SQLException {
+    public StreetLocation selectEntityById(int id) throws SQLException {
         try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
-            IStreetDao iStreetDao = sqlSession.getMapper(IStreetDao.class);
-            street = iStreetDao.selectEntityById(id);
+            IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
+            streetLocation = iStreetLocationDao.selectEntityById(id);
         } catch (SQLException e) {
             LOGGER.error("SQLException", e);
         }
-        return street;
+        return streetLocation;
     }
 
     @Override
-    public List<Street> selectAllEntity() throws SQLException {
-        List<Street> streetList = null;
+    public List<StreetLocation> selectAllEntity() throws SQLException {
+        List<StreetLocation> streetLocationList = null;
         try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
             try {
-                IStreetDao iStreetDao = sqlSession.getMapper(IStreetDao.class);
-                streetList = iStreetDao.selectAllEntity();
+                IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
+                streetLocationList = iStreetLocationDao.selectAllEntity();
             } catch (SQLException e) {
                 LOGGER.error("SQLException", e);
             }
         }
-        return streetList;
+        return streetLocationList;
     }
 
     @Override
-    public void updateEntity(Street entity) throws SQLException {
+    public void updateEntity(StreetLocation entity) throws SQLException {
         try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
-            IStreetDao iStreetDao = sqlSession.getMapper(IStreetDao.class);
+            IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
             try {
-                iStreetDao.updateEntity(entity);
+                iStreetLocationDao.updateEntity(entity);
                 sqlSession.commit();
             } catch (SQLException e) {
                 LOGGER.error("SQLException", e);
@@ -73,9 +73,9 @@ public class IStreetServiceImpl implements IStreetDao {
     @Override
     public void deleteEntity(int id) throws SQLException {
         try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
-            IStreetDao iStreetDao = sqlSession.getMapper(IStreetDao.class);
+            IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
             try {
-                iStreetDao.deleteEntity(id);
+                iStreetLocationDao.deleteEntity(id);
                 sqlSession.commit();
             } catch (SQLException e) {
                 LOGGER.error("SQLException", e);

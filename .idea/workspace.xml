@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ceb2ac00-8104-4a78-9a61-a57f807d5ec4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/mybatis/IStreetLocationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/mybatis/IStreetLocationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/mybatis/IStreetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/mybatis/IStreetServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/streetLocationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/streetLocationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/streetMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/streetMapper.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ceb2ac00-8104-4a78-9a61-a57f807d5ec4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
