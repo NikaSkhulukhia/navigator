@@ -13,7 +13,7 @@
         SELECT * FROM Street
     </select>
     <insert id="insertEntity">
-        INSERT INTO Street()
+        INSERT INTO Street
         VALUES ( #{idStreet}, #{name}, #{idCity} )
     </insert>
     <delete id="deleteEntity">

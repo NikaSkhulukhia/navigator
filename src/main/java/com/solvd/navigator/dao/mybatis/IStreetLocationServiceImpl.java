@@ -23,8 +23,9 @@ public class IStreetLocationServiceImpl implements IStreetLocationDao {
                 iStreetLocationDao.insertEntity(entity);
                 sqlSession.commit();
             } catch (SQLException e) {
-                sqlSession.rollback();
                 LOGGER.error("SQLException", e);
+            } finally {
+                sqlSession.rollback();
             }
         }
     }
@@ -62,8 +63,9 @@ public class IStreetLocationServiceImpl implements IStreetLocationDao {
                 iStreetLocationDao.updateEntity(entity);
                 sqlSession.commit();
             } catch (SQLException e) {
-                sqlSession.rollback();
                 LOGGER.error("SQLException", e);
+            } finally {
+                sqlSession.rollback();
             }
         }
     }
@@ -76,8 +78,9 @@ public class IStreetLocationServiceImpl implements IStreetLocationDao {
                 iStreetLocationDao.deleteEntity(id);
                 sqlSession.commit();
             } catch (SQLException e) {
-                sqlSession.rollback();
                 LOGGER.error("SQLException", e);
+            } finally {
+                sqlSession.rollback();
             }
         }
     }

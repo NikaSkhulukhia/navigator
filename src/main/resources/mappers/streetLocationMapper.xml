@@ -13,7 +13,7 @@
         SELECT * from StreetLocation
     </select>
     <insert id="insertEntity">
-        INSERT INTO StreetLocation()
+        INSERT INTO StreetLocation
         VALUES( #{idStreetLocation}, #{streetNumber}, #{xCoordinate}, #{yCoordinate}, #{idStreet} )
     </insert>
     <delete id="deleteEntity">
