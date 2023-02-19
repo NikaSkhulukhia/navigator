@@ -1,7 +1,9 @@
 package com.solvd.navigator.model;
 
+import java.util.Objects;
+
 public class City {
-    private Long idCity;
+    private int idCity;
     private String name;
 
     public City(){}
@@ -10,11 +12,11 @@ public class City {
         this.name=name;
     }
 
-    public Long getId() {
+    public int getId() {
         return idCity;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.idCity = id;
     }
 
@@ -24,6 +26,19 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return idCity == city.idCity && Objects.equals(name, city.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idCity, name);
     }
 
     public String toString(){

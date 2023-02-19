@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="com.solvd.navigator.dao.IDirectionsDao">
+
+    <resultMap id="ResultForDirections" type="Directions">
+        <id property="idDirections" column="idDirections"/>
+        <result property="idStreetLocation1" column="idStreetLocation1"/>
+        <result property="idStreetLocation2" column="idStreetLocation2"/>
+        <result property="trafficLight" column="trafficLight"/>
+    </resultMap>
+
+    <select id="selectEntityById" resultType="Directions" resultMap="ResultForDirections">
+        SELECT * FROM Directions WHERE idDirections =#{idDirections}
+    </select>
+
+    <select id="selectAllEntity" resultType="Directions" resultMap="ResultForDirections">
+        SELECT * from StreetLocation
+    </select>
+
+    <insert id="insertEntity" >
+        INSERT INTO Directions(idDirections, idStreetLocation1, idStreetLocation2)
+        VALUES (#{idDirections},  #{idStreetLocation1}, #{idStreetLocation2}, #{trafficLight})
+    </insert>
+
+    <update id="updateEntity" >
+        UPDATE Directions
+        SET
+        idStreetLocation1 = #{idStreetLocation1},
+        idStreetLocation2 = #{idStreetLocation2},
+        trafficLight = #{trafficLight},
+
+    </update>
+
+    <delete id="deleteEntity" >
+        DELETE FROM Directions WHERE idDirections=#{idDirections}
+    </delete>
+</mapper>

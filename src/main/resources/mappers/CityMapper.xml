@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ICityDao">
+    <resultMap id="result1" type="model.City" autoMapping="false">
+        <id property="idCity" column="idCity" />
+        <result property="name" column="name" />
+    </resultMap>
+    <select id="selectEntityById" resultType="model.City" resultMap="result1">
+        SELECT * FROM City WHERE idCity = #{id}
+    </select>
+    <select id="selectAllEntity" resultType="model.City" resultMap="result1">
+        SELECT * FROM City
+    </select>
+    <insert id="insertEntity">
+        INSERT INTO City () VALUES(#{idCity}, #{name})
+    </insert>
+    <delete id="deleteEntity">
+        DELETE FROM City WHERE idCity = #{id}
+    </delete>
+    <update id="updateEntity">
+        UPDATE City SET idCity=#{idCity}, name=#{name}, WHERE idCity= #{idCity}
+    </update>
+</mapper>
