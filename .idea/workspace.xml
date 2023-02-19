@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ceb2ac00-8104-4a78-9a61-a57f807d5ec4" name="Changes" comment="" />
+    <list default="true" id="ceb2ac00-8104-4a78-9a61-a57f807d5ec4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IBaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IBaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IDirectionsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IDirectionsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IPublicTransportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IPublicTransportDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IPublicTransportDirectionsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/dao/IPublicTransportDirectionsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/Directions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/Directions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/PublicTransport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/PublicTransport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/PublicTransportDirections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/PublicTransportDirections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/Street.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/Street.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/StreetLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/navigator/model/StreetLocation.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

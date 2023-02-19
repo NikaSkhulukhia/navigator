@@ -1,46 +1,61 @@
 package com.solvd.navigator.model;
 
+import java.util.Objects;
+
 public class PublicTransportDirections {
-    private Long idPublicTransportDirections;
-    private Long idPublicTransport;
-    private Long idStreetLocation;
+    private int idPublicTransportDirections;
+    private int idPublicTransport;
+    private int idStreetLocation;
 
     public PublicTransportDirections(){}
 
 
-    public PublicTransportDirections(Long idPublicTransportDirections, Long idPublicTransport, Long idStreetLocation){
+    public PublicTransportDirections(int idPublicTransportDirections, int idPublicTransport, int idStreetLocation){
         this.idPublicTransportDirections=idPublicTransportDirections;
         this.idPublicTransport=idPublicTransport;
         this.idStreetLocation=idStreetLocation;
     }
 
-    public PublicTransportDirections(Long idPublicTransport, Long idStreetLocation){
+    public PublicTransportDirections(int idPublicTransport, int idStreetLocation){
         this.idPublicTransport=idPublicTransport;
         this.idStreetLocation=idStreetLocation;
     }
 
-    public Long getIdPublicTransportDirections() {
+    public int getIdPublicTransportDirections() {
         return idPublicTransportDirections;
     }
 
-    public void setIdPublicTransportDirections(Long idPublicTransportDirections) {
+    public void setIdPublicTransportDirections(int idPublicTransportDirections) {
         this.idPublicTransportDirections = idPublicTransportDirections;
     }
 
-    public Long getIdPublicTransport() {
+    public int getIdPublicTransport() {
         return idPublicTransport;
     }
 
-    public void setIdPublicTransport(Long idPublicTransport) {
+    public void setIdPublicTransport(int idPublicTransport) {
         this.idPublicTransport = idPublicTransport;
     }
 
-    public Long getIdStreetLocation() {
+    public int getIdStreetLocation() {
         return idStreetLocation;
     }
 
-    public void setIdStreetLocation(Long idStreetLocation) {
+    public void setIdStreetLocation(int idStreetLocation) {
         this.idStreetLocation = idStreetLocation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PublicTransportDirections that = (PublicTransportDirections) o;
+        return idPublicTransportDirections == that.idPublicTransportDirections && idPublicTransport == that.idPublicTransport && idStreetLocation == that.idStreetLocation;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPublicTransportDirections, idPublicTransport, idStreetLocation);
     }
 
     public String toString() {

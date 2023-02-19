@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="com.solvd.navigator.dao.IPublicTransportDirectionsDao">
+    <resultMap id="ResultForPublicTransportDirections" type="PublicTransportDirections">
+        <id property="idPublicTransportDirections" column="idPublicTransportDirections"/>
+        <result property="idPublicTransport" column="idPublicTransport"/>
+        <result property="idStreetLocation" column="idStreetLocation"/>
+    </resultMap>
+
+    <select id="selectAllEntity" resultMap="ResultForPublicTransportDirections">
+        SELECT * FROM PublicTransportDirections
+    </select>
+
+    <select id="selectEntityById" resultMap="ResultForPublicTransportDirections">
+        SELECT * FROM PublicTransportDirections WHERE idPublicTransportDirections =#{idPublicTransportDirections}
+    </select>
+
+    <insert id="insertEntity" parameterType="PublicTransportDirections">
+        INSERT INTO PublicTransportDirections(idPublicTransportDirections, idPublicTransport, idStreetLocation)
+        VALUES (#{idPublicTransportDirections},  #{idStreetLocation}, #{idStreetLocation})
+    </insert>
+
+    <update id="updateEntity" parameterType="PublicTransportDirections">
+        UPDATE PublicTransportDirections
+        SET
+        idPublicTransport = #{idPublicTransport},
+        idStreetLocation = #{idStreetLocation}
+    </update>
+
+    <delete id="deleteEntity" >
+        DELETE FROM PublicTransportDirections WHERE idPublicTransportDirections=#{idPublicTransportDirections}
+    </delete>
+</mapper>

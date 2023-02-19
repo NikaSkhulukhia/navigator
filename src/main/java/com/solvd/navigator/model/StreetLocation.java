@@ -1,22 +1,24 @@
 package com.solvd.navigator.model;
 
+import java.util.Objects;
+
 public class StreetLocation {
-    private Long idStreetLocation;
+    private int idStreetLocation;
     private int streetNumber;
     private double xCoordinate;
     private double yCoordinate;
-    private Long idStreet;
+    private int idStreet;
 
     public StreetLocation(){}
 
-    public StreetLocation(int streetNumber, double xCoordinate, double yCoordinate, Long idStreet){
+    public StreetLocation(int streetNumber, double xCoordinate, double yCoordinate, int idStreet){
         this.streetNumber=streetNumber;
         this.xCoordinate=xCoordinate;
         this.yCoordinate=yCoordinate;
         this.idStreet=idStreet;
     }
 
-    public StreetLocation(Long idStreetLocation, int streetNumber, double xCoordinate, double yCoordinate, Long idStreet){
+    public StreetLocation(int idStreetLocation, int streetNumber, double xCoordinate, double yCoordinate, int idStreet){
         this.idStreetLocation=idStreetLocation;
         this.streetNumber=streetNumber;
         this.xCoordinate=xCoordinate;
@@ -24,11 +26,11 @@ public class StreetLocation {
         this.idStreet=idStreet;
     }
 
-    public Long getIdStreetLocation() {
+    public int getIdStreetLocation() {
         return idStreetLocation;
     }
 
-    public void setIdStreetLocation(Long idStreetLocation) {
+    public void setIdStreetLocation(int idStreetLocation) {
         this.idStreetLocation = idStreetLocation;
     }
 
@@ -56,12 +58,25 @@ public class StreetLocation {
         this.yCoordinate = yCoordinate;
     }
 
-    public Long getIdStreet() {
+    public int getIdStreet() {
         return idStreet;
     }
 
-    public void setIdStreet(Long idStreet) {
+    public void setIdStreet(int idStreet) {
         this.idStreet = idStreet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StreetLocation that = (StreetLocation) o;
+        return idStreetLocation == that.idStreetLocation && streetNumber == that.streetNumber && Double.compare(that.xCoordinate, xCoordinate) == 0 && Double.compare(that.yCoordinate, yCoordinate) == 0 && idStreet == that.idStreet;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idStreetLocation, streetNumber, xCoordinate, yCoordinate, idStreet);
     }
 
     @Override
