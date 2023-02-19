@@ -22,11 +22,11 @@ public class CarImpl implements ICarDao {
     public Car selectEntityById(int id) {
         try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
             ICarDao carDao = sqlSession.getMapper(ICarDao.class);
-            city = carDao.selectEntityById(id);
+            car = carDao.selectEntityById(id);
         } catch (SQLException e) {
             LOGGER.error("SQLException", e);
         }
-        return city;
+        return car;
     }
 
     @Override
