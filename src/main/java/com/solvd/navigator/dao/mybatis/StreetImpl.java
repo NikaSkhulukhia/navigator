@@ -2,6 +2,7 @@ package com.solvd.navigator.dao.mybatis;
 
 import com.solvd.navigator.dao.IStreetDao;
 import com.solvd.navigator.model.Street;
+import com.solvd.navigator.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.logging.log4j.LogManager;

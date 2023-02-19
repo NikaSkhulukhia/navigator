@@ -2,6 +2,7 @@ package com.solvd.navigator.dao.mybatis;
 
 import com.solvd.navigator.dao.IStreetLocationDao;
 import com.solvd.navigator.model.StreetLocation;
+import com.solvd.navigator.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class StreetLocationImpl implements IStreetLocationDao {
     private static final Logger LOGGER = LogManager.getLogger(StreetImpl.class);
-    private static final SqlSessionFactory SESSION_FACTORY = MyBatisUtil.getSqlSessionFactory;
+    private static final SqlSessionFactory SESSION_FACTORY = MyBatisUtil.getSqlSessionFactory();
     StreetLocation streetLocation;
 
     @Override
