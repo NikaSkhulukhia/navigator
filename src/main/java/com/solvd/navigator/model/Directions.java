@@ -1,48 +1,50 @@
 package com.solvd.navigator.model;
 
+import java.util.Objects;
+
 public class Directions {
-    private Long idDirections;
-    private Long idStreetLocation1;
-    private Long getIdStreetLocation2;
+    private int idDirections;
+    private int idStreetLocation1;
+    private int idStreetLocation2;
     private boolean trafficLight;
 
     public Directions(){}
 
-    public Directions(Long idStreetLocation1, Long getIdStreetLocation2, boolean trafficLight) {
+    public Directions(int idStreetLocation1, int idStreetLocation2, boolean trafficLight) {
         this.idStreetLocation1 = idStreetLocation1;
-        this.getIdStreetLocation2 = getIdStreetLocation2;
+        this.idStreetLocation2 = idStreetLocation2;
         this.trafficLight = trafficLight;
     }
 
-    public Directions(Long idDirections, Long idStreetLocation1, Long getIdStreetLocation2, boolean trafficLight) {
+    public Directions(int idDirections, int idStreetLocation1, int idStreetLocation2, boolean trafficLight) {
         this.idDirections = idDirections;
         this.idStreetLocation1 = idStreetLocation1;
-        this.getIdStreetLocation2 = getIdStreetLocation2;
+        this.idStreetLocation2 = idStreetLocation2;
         this.trafficLight = trafficLight;
     }
 
-    public Long getIdDirections() {
+    public int getIdDirections() {
         return idDirections;
     }
 
-    public void setIdDirections(Long idDirections) {
+    public void setIdDirections(int idDirections) {
         this.idDirections = idDirections;
     }
 
-    public Long getIdStreetLocation1() {
+    public int getIdStreetLocation1() {
         return idStreetLocation1;
     }
 
-    public void setIdStreetLocation1(Long idStreetLocation1) {
+    public void setIdStreetLocation1(int idStreetLocation1) {
         this.idStreetLocation1 = idStreetLocation1;
     }
 
-    public Long getGetIdStreetLocation2() {
-        return getIdStreetLocation2;
+    public int getidStreetLocation2() {
+        return idStreetLocation2;
     }
 
-    public void setGetIdStreetLocation2(Long getIdStreetLocation2) {
-        this.getIdStreetLocation2 = getIdStreetLocation2;
+    public void setidStreetLocation2(int idStreetLocation2) {
+        this.idStreetLocation2 = idStreetLocation2;
     }
 
     public boolean isTrafficLight() {
@@ -54,11 +56,24 @@ public class Directions {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Directions that = (Directions) o;
+        return idDirections == that.idDirections && idStreetLocation1 == that.idStreetLocation1 && idStreetLocation2 == that.idStreetLocation2 && trafficLight == that.trafficLight;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idDirections, idStreetLocation1, idStreetLocation2, trafficLight);
+    }
+
+    @Override
     public String toString() {
         return "Directions{" +
                 "idDirections=" + idDirections +
                 ", idStreetLocation1='" + idStreetLocation1 + '\'' +
-                ", getIdStreetLocation2='" + getIdStreetLocation2 + '\'' +
+                ", idStreetLocation2='" + idStreetLocation2 + '\'' +
                 ", trafficLight=" + trafficLight +
                 '}';
     }

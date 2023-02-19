@@ -1,16 +1,18 @@
 package com.solvd.navigator.model;
 
+import java.util.Objects;
+
 public class Car {
-    private Long idCar;
+    private int idCar;
     private double averageSpeed;
     private String make;
     private String model;
-    private Long productionYear;
+    private int productionYear;
     private String bodyType;
 
     public Car(){}
 
-    public Car(double averageSpeed, String make, String model,Long productionYear, String bodyType ){
+    public Car(double averageSpeed, String make, String model,int productionYear, String bodyType ){
         this.averageSpeed=averageSpeed;
         this.make=make;
         this.model=model;
@@ -18,7 +20,7 @@ public class Car {
         this.bodyType=bodyType;
     }
 
-    public Car(Long idCar, double averageSpeed, String make, String model,Long productionYear, String bodyType ){
+    public Car(int idCar, double averageSpeed, String make, String model,int productionYear, String bodyType ){
         this.idCar=idCar;
         this.averageSpeed=averageSpeed;
         this.make=make;
@@ -27,11 +29,11 @@ public class Car {
         this.bodyType=bodyType;
     }
 
-    public Long getIdCar() {
+    public int getIdCar() {
         return idCar;
     }
 
-    public void setIdCar(Long idCar) {
+    public void setIdCar(int idCar) {
         this.idCar = idCar;
     }
 
@@ -59,11 +61,11 @@ public class Car {
         this.model = model;
     }
 
-    public Long getProductionYear() {
+    public int getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(Long productionYear) {
+    public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
     }
 
@@ -73,6 +75,19 @@ public class Car {
 
     public void setBodyType(String bodyType) {
         this.bodyType = bodyType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return idCar == car.idCar && Double.compare(car.averageSpeed, averageSpeed) == 0 && productionYear == car.productionYear && Objects.equals(make, car.make) && Objects.equals(model, car.model) && Objects.equals(bodyType, car.bodyType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idCar, averageSpeed, make, model, productionYear, bodyType);
     }
 
     @Override
