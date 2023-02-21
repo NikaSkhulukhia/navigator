@@ -39,3 +39,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### res ###
+src/main/resources/localdatabase.properties
+
+### logs ###
+logs/*
