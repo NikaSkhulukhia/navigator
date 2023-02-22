@@ -1,36 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
-        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 <mapper namespace="com.solvd.navigator.dao.IPublicTransportDao">
-    <resultMap id="ResultForPublicTransport" type="PublicTransport">
-        <id property="idPublicTransport" column="idPublicTransport"/>
-        <result property="publicTransportNumber" column="publicTransportNumber"/>
-        <result property="averageSpeed" column="averageSpeed"/>
-    </resultMap>
-
-    <select id="selectEntityById"  resultMap="ResultForPublicTransport">
-        SELECT * FROM PublicTransport WHERE idPublicTransport =#{idPublicTransport}
+	<resultMap id="Result" type="model.PublicTransport">
+		<id property="idPublicTransport" column="idPublicTransport" />
+		<result property="publicTransportNumber" column="publicTransportNumber" />
+		<result property="averageSpeed" column="averageSpeed" />
+	</resultMap>
+	<select id="selectEntityById" resultType="model.PublicTransport" resultMap="Result">
+        SELECT * FROM PublicTransport WHERE idPublicTransport =#{id}
     </select>
-
-    <select id="selectAllEntity" resultType="Directions" resultMap="ResultForDirections">
-        SELECT * from PublicTransport
+	<select id="selectAllEntity" resultType="model.PublicTransport" resultMap="Result">
+        SELECT * FROM PublicTransport
     </select>
-
-
-    <insert id="insertEntity" parameterType="PublicTransport">
+	<insert id="insertEntity">
         INSERT INTO PublicTransport(idPublicTransport, publicTransportNumber, averageSpeed)
         VALUES (#{idPublicTransport},  #{publicTransportNumber}, #{averageSpeed})
     </insert>
-
-    <update id="updateEntity" parameterType="PublicTransport">
-        UPDATE PublicTransport
-        SET
-        publicTransportNumber = #{publicTransportNumber},
-        averageSpeed = #{averageSpeed}
+	<update id="updateEntity">
+        UPDATE PublicTransport SET publicTransportNumber = #{publicTransportNumber},averageSpeed = #{averageSpeed} WHERE idPublicTransport = #{idPublicTransport}
     </update>
-
-    <delete id="deleteEntity" >
-        DELETE FROM PublicTransport WHERE idPublicTransport=#{idPublicTransport}
+	<delete id="deleteEntity">
+        DELETE FROM PublicTransport WHERE idPublicTransport=#{id}
     </delete>
 </mapper>

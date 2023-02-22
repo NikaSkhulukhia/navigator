@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IStreetDao">
-    <resultMap id="resultMapStreet" type="model.Street" autoMapping="false">
-        <id column="idStreet" property="idStreet"/>
-        <result column="idCity" property="idCity"/>
-    </resultMap>
-    <select id="selectEntityById" resultType="model.Street" resultMap="resultMapStreet">
-        SELECT * FROM Street
-        WHERE idStreet = #{id}
+<mapper namespace="com.solvd.navigator.dao.IStreetDao">
+	<resultMap id="resultMapStreet" type="model.Street" autoMapping="false">
+		<id property="idStreet" column="idStreet" />
+		<result property="idCity" column="idCity" />
+		<result property="name" column="name" />
+	</resultMap>
+	<select id="selectEntityById" resultType="model.Street" resultMap="resultMapStreet">
+        SELECT * FROM Street WHERE idStreet = #{id}
     </select>
-    <select id="selectAllEntity" resultType="model.Street" resultMap="resultMapStreet">
+	<select id="selectAllEntity" resultType="model.Street" resultMap="resultMapStreet">
         SELECT * FROM Street
     </select>
-    <insert id="insertEntity">
-        INSERT INTO Street
-        VALUES ( #{idStreet}, #{name}, #{idCity} )
+	<insert id="insertEntity">
+        INSERT INTO Street VALUES (#{idStreet},#{name},#{idCity})
     </insert>
-    <delete id="deleteEntity">
-        DELETE * FROM Street
-        WHERE idStreet = #{idStreet}
+	<delete id="deleteEntity">
+        DELETE * FROM Street WHERE idStreet = #{id}
     </delete>
-    <update id="updateEntity">
-        UPDATE Street SET idStreet=#{idStreet}, idCity=#{idCity}
-        WHERE idStreet = #{idStreet}
+	<update id="updateEntity">
+        UPDATE Street SET idStreet=#{idStreet}, idCity=#{idCity} WHERE idStreet = #{id}
     </update>
 </mapper>

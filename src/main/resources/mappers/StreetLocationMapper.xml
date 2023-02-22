@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IStreetLocationDao">
-    <resultMap id="resultMapStreetLocation" type="model.StreetLocation" autoMapping="false">
-        <id column="idStreetLocation" property="idStreetLocation"/>
-        <result column="idStreet" property="idStreet"/>
-    </resultMap>
-    <select id="selectEntityById" resultType="model.Street" resultMap="resultMapStreetLocation">
-        SELECT * FROM StreetLocation
-        WHERE idStreetLocation = #{id}
+<mapper namespace="com.solvd.navigator.dao.IStreetLocationDao">
+	<resultMap id="resultMapStreetLocation" type="model.StreetLocation" autoMapping="false">
+		<id column="idStreetLocation" property="idStreetLocation" />
+		<result property="idCarServiceB" column="idCarServiceB" />
+		<result property="streetNumber" column="streetNumber" />
+		<result property="xCoordinate" column="xCoordinate" />
+		<result property="yCoordinate" column="yCoordinate" />
+		<result property="idStreet" column="idStreet" />
+	</resultMap>
+	<select id="selectEntityById" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
+        SELECT * FROM StreetLocation WHERE idStreetLocation = #{id}
     </select>
-    <select id="selectAllEntity" resultType="model.Street" resultMap="resultMapStreetLocation">
+	<select id="selectAllEntity" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
         SELECT * from StreetLocation
     </select>
-    <insert id="insertEntity">
+	<insert id="insertEntity">
         INSERT INTO StreetLocation
         VALUES( #{idStreetLocation}, #{streetNumber}, #{xCoordinate}, #{yCoordinate}, #{idStreet} )
     </insert>
-    <delete id="deleteEntity">
-        DELETE * from StreetLocation
-        WHERE idStreetLocation = #{idStreetLocation}
+	<delete id="deleteEntity">
+        DELETE * from StreetLocation WHERE idStreetLocation = #{id}
     </delete>
-    <update id="updateEntity">
+	<update id="updateEntity">
         UPDATE StreetLocation SET idStreetLocation=#{idStreetLocation}, idStreet=#{idStreet}
         WHERE idStreetLocation = #{idStreetLocation}
     </update>
