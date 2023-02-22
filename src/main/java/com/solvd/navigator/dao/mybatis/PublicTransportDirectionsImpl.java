@@ -1,19 +1,20 @@
 package com.solvd.navigator.dao.mybatis;
 
-import com.solvd.navigator.dao.IPublicTransportDirectionsDao;
-import com.solvd.navigator.model.PublicTransportDirections;
-import com.solvd.navigator.util.MyBatisUtil;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
-import java.util.List;
+import com.solvd.navigator.dao.IPublicTransportDirectionsDao;
+import com.solvd.navigator.model.PublicTransportDirections;
+import com.solvd.navigator.util.MyBatisUtil;
 
-public class PublicTransportDirectionsDao implements IPublicTransportDirectionsDao {
+public class PublicTransportDirectionsImpl implements IPublicTransportDirectionsDao {
     private static final SqlSessionFactory SESSION_FACTORY = MyBatisUtil.getSqlSessionFactory();
-    private static final Logger LOGGER = LogManager.getLogger(PublicTransportDirectionsDao.class);
+    private static final Logger LOGGER = LogManager.getLogger(PublicTransportDirectionsImpl.class);
     PublicTransportDirections publicTransportDirections;
     @Override
     public void insertEntity(PublicTransportDirections entity) throws SQLException {
@@ -47,8 +48,8 @@ public class PublicTransportDirectionsDao implements IPublicTransportDirectionsD
     public List<PublicTransportDirections> selectAllEntity() throws SQLException {
         List<PublicTransportDirections> publicTransportDirectionsList = null;
         try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
-            try {
-                IPublicTransportDirectionsDao iPublicTransportDirectionsDao = sqlSession.getMapper(IPublicTransportDirectionsDao.class);
+        	 IPublicTransportDirectionsDao iPublicTransportDirectionsDao = sqlSession.getMapper(IPublicTransportDirectionsDao.class);
+        	try {
                 publicTransportDirectionsList = iPublicTransportDirectionsDao.selectAllEntity();
             } catch (SQLException e) {
                 LOGGER.error("SQLException", e);

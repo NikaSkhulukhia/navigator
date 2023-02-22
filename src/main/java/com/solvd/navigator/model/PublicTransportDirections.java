@@ -7,45 +7,43 @@ public class PublicTransportDirections {
     private int idPublicTransport;
     private int idStreetLocation;
 
-    public PublicTransportDirections(){}
 
+    public PublicTransportDirections() {
+		super();
+	}
 
-    public PublicTransportDirections(int idPublicTransportDirections, int idPublicTransport, int idStreetLocation){
-        this.idPublicTransportDirections=idPublicTransportDirections;
-        this.idPublicTransport=idPublicTransport;
-        this.idStreetLocation=idStreetLocation;
-    }
+	public PublicTransportDirections(int idPublicTransportDirections, int idPublicTransport, int idStreetLocation) {
+		super();
+		this.idPublicTransportDirections = idPublicTransportDirections;
+		this.idPublicTransport = idPublicTransport;
+		this.idStreetLocation = idStreetLocation;
+	}
 
-    public PublicTransportDirections(int idPublicTransport, int idStreetLocation){
-        this.idPublicTransport=idPublicTransport;
-        this.idStreetLocation=idStreetLocation;
-    }
+	public int getIdPublicTransportDirections() {
+		return idPublicTransportDirections;
+	}
 
-    public int getIdPublicTransportDirections() {
-        return idPublicTransportDirections;
-    }
+	public void setIdPublicTransportDirections(int idPublicTransportDirections) {
+		this.idPublicTransportDirections = idPublicTransportDirections;
+	}
 
-    public void setIdPublicTransportDirections(int idPublicTransportDirections) {
-        this.idPublicTransportDirections = idPublicTransportDirections;
-    }
+	public int getIdPublicTransport() {
+		return idPublicTransport;
+	}
 
-    public int getIdPublicTransport() {
-        return idPublicTransport;
-    }
+	public void setIdPublicTransport(int idPublicTransport) {
+		this.idPublicTransport = idPublicTransport;
+	}
 
-    public void setIdPublicTransport(int idPublicTransport) {
-        this.idPublicTransport = idPublicTransport;
-    }
+	public int getIdStreetLocation() {
+		return idStreetLocation;
+	}
 
-    public int getIdStreetLocation() {
-        return idStreetLocation;
-    }
+	public void setIdStreetLocation(int idStreetLocation) {
+		this.idStreetLocation = idStreetLocation;
+	}
 
-    public void setIdStreetLocation(int idStreetLocation) {
-        this.idStreetLocation = idStreetLocation;
-    }
-
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -58,12 +56,12 @@ public class PublicTransportDirections {
         return Objects.hash(idPublicTransportDirections, idPublicTransport, idStreetLocation);
     }
 
-    public String toString() {
-        return "PublicTransportDirections{" +
-                "id=" + idPublicTransportDirections +
-                ", Name='" + idPublicTransport + '\'' +
-                ", SurName='" + idStreetLocation + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "PublicTransportDirections [idPublicTransportDirections=" + idPublicTransportDirections
+				+ ", idPublicTransport=" + idPublicTransport + ", idStreetLocation=" + idStreetLocation + "]";
+	}
+
+  
 }
 

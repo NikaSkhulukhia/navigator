@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.ICarDao">
+<mapper namespace="com.solvd.navigator.dao.ICarDao">
     <resultMap id="result1" type="model.Car" autoMapping="false">
         <id property="idCar" column="idCar" />
         <result property="averageSpeed" column="averageSpeed" />

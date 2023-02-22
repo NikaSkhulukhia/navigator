@@ -1,39 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
-        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 <mapper namespace="com.solvd.navigator.dao.IDirectionsDao">
-
-    <resultMap id="ResultForDirections" type="Directions">
-        <id property="idDirections" column="idDirections"/>
-        <result property="idStreetLocation1" column="idStreetLocation1"/>
-        <result property="idStreetLocation2" column="idStreetLocation2"/>
-        <result property="trafficLight" column="trafficLight"/>
-    </resultMap>
-
-    <select id="selectEntityById" resultType="Directions" resultMap="ResultForDirections">
-        SELECT * FROM Directions WHERE idDirections =#{idDirections}
+	<resultMap id="Directions" type="model.Directions" autoMapping="false">
+		<id property="idDirections" column="idDirections" />
+		<result property="idStreetLocation1" column="idStreetLocation1" />
+		<result property="idStreetLocation2" column="idStreetLocation2" />
+		<result property="trafficLight" column="trafficLight" />
+	</resultMap>
+	<select id="selectEntityById" resultType="model.Directions" resultMap="Directions">
+        SELECT * FROM Directions WHERE idDirections = #{id}
     </select>
-
-    <select id="selectAllEntity" resultType="Directions" resultMap="ResultForDirections">
-        SELECT * from StreetLocation
+	<select id="selectAllEntity" resultType="model.Directions" resultMap="Directions">
+        SELECT * FROM Directions
     </select>
-
-    <insert id="insertEntity" >
+	<insert id="insertEntity">
         INSERT INTO Directions(idDirections, idStreetLocation1, idStreetLocation2)
         VALUES (#{idDirections},  #{idStreetLocation1}, #{idStreetLocation2}, #{trafficLight})
     </insert>
-
-    <update id="updateEntity" >
-        UPDATE Directions
-        SET
-        idStreetLocation1 = #{idStreetLocation1},
-        idStreetLocation2 = #{idStreetLocation2},
-        trafficLight = #{trafficLight},
-
-    </update>
-
-    <delete id="deleteEntity" >
-        DELETE FROM Directions WHERE idDirections=#{idDirections}
+	<update id="updateEntity">
+        UPDATE Directions SET idDirections= #{idDirections}, idStreetLocation1 = #{idStreetLocation1}, 
+        idStreetLocation2 = #{idStreetLocation2}, trafficLight = #{trafficLight} WHERE idDirections=#{idDirections}
+     </update>
+	<delete id="deleteEntity">
+        DELETE FROM Directions WHERE idDirections=#{id}
     </delete>
 </mapper>

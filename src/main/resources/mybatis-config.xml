@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="localdatabase.properties" />
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC">
-                <property name="defaultReadOnly" value="false" />
-            </transactionManager>
-            <dataSource type="POOLED">
-                <property name="driver" value="${driverClassName}" />
-                <property name="url" value="${url}" />
-                <property name="username" value="${user}" />
-                <property name="password" value="${password}" />
-            </dataSource>
-        </environment>
-    </environments>
-    <mappers>
-        <mapper resource="mappers/CarMapper.xml" />
-        <mapper resource="mappers/CityMapper.xml" />
-        <mapper resource="mappers/DirectionsMapper.xml" />
-        <mapper resource="mappers/PublicTransportMapper.xml" />
-        <mapper resource="mappers/PublicTransportDirectionsMapper.xml" />
-        <mapper resource="mappers/StreetMapper.xml" />
-        <mapper resource="mappers/StreetLocationMapper.xml" />
-    </mappers>
+	<properties resource="localdatabase.properties" />
+	<typeAliases>
+		<typeAlias type="com.solvd.navigator.model.Car" alias="model.Car" />
+		<typeAlias type="com.solvd.navigator.model.City" alias="model.City" />
+		<typeAlias type="com.solvd.navigator.model.Directions" alias="model.Directions" />
+		<typeAlias type="com.solvd.navigator.model.PublicTransport" alias="model.PublicTransport" />
+		<typeAlias type="com.solvd.navigator.model.PublicTransportDirections" alias="model.PublicTransportDirections" />
+		<typeAlias type="com.solvd.navigator.model.Street" alias="model.Street" />
+		<typeAlias type="com.solvd.navigator.model.StreetLocation" alias="model.StreetLocation" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC">
+				<property name="defaultReadOnly" value="false" />
+			</transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driverClassName}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mappers/CarMapper.xml" />
+		<mapper resource="mappers/CityMapper.xml" />
+		<mapper resource="mappers/DirectionsMapper.xml" />
+		<mapper resource="mappers/PublicTransportMapper.xml" />
+		<mapper resource="mappers/PublicTransportDirectionsMapper.xml" />
+		<mapper resource="mappers/StreetMapper.xml" />
+		<mapper resource="mappers/StreetLocationMapper.xml" />
+	</mappers>
 </configuration>
