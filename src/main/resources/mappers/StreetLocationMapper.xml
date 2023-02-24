@@ -9,8 +9,16 @@
 		<result property="yCoordinate" column="yCoordinate" />
 		<result property="idStreet" column="idStreet" />
 	</resultMap>
-	<select id="selectEntityById" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
+	<resultMap id="resultMapStreetLocation1" type="model.StreetLocation" autoMapping="false">
+		<id column="idStreetLocation" property="idStreetLocation" />
+		<result property="xCoordinate" column="xCoordinate" />
+		<result property="yCoordinate" column="yCoordinate" />
+	</resultMap>
+	<select id="selectEntityById" resultType="model.StreetLocation" resultMap="resultMapStreetLocation1">
         SELECT * FROM StreetLocation WHERE idStreetLocation = #{id}
+    </select>
+    <select id="getStreetLocationByID" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
+        SELECT xCoordinate, yCoordinate FROM StreetLocation WHERE idStreetLocation = #{id}
     </select>
 	<select id="selectAllEntity" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
         SELECT * from StreetLocation

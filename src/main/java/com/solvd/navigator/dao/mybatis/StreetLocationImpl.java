@@ -16,7 +16,7 @@ public class StreetLocationImpl implements IStreetLocationDao {
 	private static final Logger LOGGER = LogManager.getLogger(StreetImpl.class);
 
 	StreetLocation streetLocation;
-
+	StreetLocation xyCoordinates;
 	@Override
 	public void insertEntity(StreetLocation entity) throws SQLException {
 		try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
@@ -85,5 +85,21 @@ public class StreetLocationImpl implements IStreetLocationDao {
 				sqlSession.rollback();
 			}
 		}
+	}
+
+	@Override
+	public StreetLocation getStreetLocationByID(int id) throws SQLException {
+		try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
+			IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
+			try {
+				xyCoordinates = iStreetLocationDao.getStreetLocationByID(id);
+				sqlSession.commit();
+			} catch (SQLException e) {
+				LOGGER.error("SQLException", e);
+			} finally {
+				sqlSession.rollback();
+			}
+		}
+		return xyCoordinates;
 	}
 }

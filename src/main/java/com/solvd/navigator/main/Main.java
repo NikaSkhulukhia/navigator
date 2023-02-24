@@ -15,18 +15,28 @@ import com.solvd.navigator.dao.mybatis.PublicTransportImpl;
 //import com.solvd.navigator.dao.mybatis.CarImpl;
 import com.solvd.navigator.dao.mybatis.StreetImpl;
 import com.solvd.navigator.dao.mybatis.StreetLocationImpl;
+import com.solvd.navigator.model.Directions;
 import com.solvd.navigator.model.StreetLocation;
 import com.solvd.navigator.service.FloydService;
+import com.solvd.navigator.service.FloydTimeService;
+import com.solvd.navigator.service.TimeGraphService;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 	private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+		
+		
+		
 		// Street Location Verified
 		// Car verified
 		// City verified
@@ -43,17 +53,26 @@ public class Main {
 		IPublicTransportDirectionsDao publicTransportDirections = new PublicTransportDirectionsImpl();
 		IStreetDao street = new StreetImpl();
 		
-		try {
-			LOGGER.info(street.selectAllEntity());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 		try {
-			System.out.println(publicTransportDirections.selectAllEntity());
+			List<Directions> directionsTable = directions.selectAllEntity();
+			HashMap neighbours = new HashMap();
+			for (Directions directions2 : directionsTable) {
+				 //System.out.println(directions2);
+				 if(directions2.isTrafficLight() == false) {
+					int a = directions2.getIdStreetLocation1();
+					int b = directions2.getIdStreetLocation2();
+					neighbours.put(a, b);
+					System.out.println(a +  "        " + b);  
+					System.out.println(neighbours);
+				 } 
+				 
+				}
+		
+			
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			
 		}
 
 		// List<StreetLocation> allAdreses = strInst.selectAllEntity();
@@ -74,13 +93,36 @@ public class Main {
 		// დროს ვითვლით დისტანცია / არჩ. ტრანსპ. საშ. სიჩქარეზე +
 		// navigatordb.directions-ში შუქნიშანი არის true 10 წუთი
 		// ამ დროებს ვინახავთ 2 განზომილებიან მასივში int[][] graphTime
+		// mirian
+		
 		int[][] graphTime = { { 0, 33, 6, Integer.MAX_VALUE }, { 33, 0, 22, 1 }, { 6, 22, 0, 4 },
 				{ Integer.MAX_VALUE, 1, 4, 0 } };
-		// mirian
+		
+		TimeGraphService tg = new TimeGraphService();
+		TimeGraphService tc = new TimeGraphService();
+		
+		tc.initializeTimeMatrix("car");
+		double[][] timeMatrix = tg.initializeTimeMatrix("car");
+		System.out.println("---------------------------------");
+		for (int i = 0; i < timeMatrix.length; i++) {
+		    for (int j = 0; j < timeMatrix[i].length; j++) {
+		        System.out.print(timeMatrix[i][j] + " ");
+		    }
+		    System.out.println();
+		}
+		
+		System.out.println("---------------------------------");
+		
+		
+ 
+
+		
+		
+		
 
 		// 3. სკანერით ირჩევს იუზერი საწყისი ადრესის ინდექსს და საბოლოო ადრესის ინდექსს
-		int i = 3;
-		int j = 0;
+		int i = 0;
+		int j = 3;
 		// saba
 		// ტრანსპორტი
 		// გთხოვთ აირჩიოთ სასურველი ტრანსპორტი: 1. ბასი 2. ქარი.
@@ -106,11 +148,20 @@ public class Main {
 		fs.floydWarshall();
 		System.out.println(fs.distRes());
 
-		FloydService fsTime = new FloydService();
-		fsTime.setGraph(graphTime);
-		fsTime.setStartIndex(i);
-		fsTime.setEndIndex(j);
-		fsTime.floydWarshall();
-		System.out.println(fsTime.timeRes());
+	    FloydService fsTime = new FloydService();
+		
+		//  fsTime.setGraph(timeMatrix); 
+		 // fsTime.setStartIndex(i); 
+		 // fsTime.setEndIndex(j);
+		//  fsTime.floydWarshall(); 
+		 // System.out.println(fsTime.timeRes());
+	    
+	    FloydTimeService fsTime1 = new FloydTimeService();
+	    fsTime1.setGraph(timeMatrix);
+	    fsTime1.setStartIndex(0); 
+	    fsTime1.setEndIndex(1);  
+	    fsTime1.floydWarshall();
+	    System.out.println(fsTime1.timeRes());
+		 
 	}
 }
