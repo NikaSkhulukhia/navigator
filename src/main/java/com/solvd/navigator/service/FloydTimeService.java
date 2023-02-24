@@ -20,7 +20,7 @@ public class FloydTimeService {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 dist[i][j] = graph[i][j];
-                if (graph[i][j] != 0) {
+                if (graph[i][j] != Double.POSITIVE_INFINITY) {
                     next[i][j] = j;
                 }
             }
@@ -30,7 +30,7 @@ public class FloydTimeService {
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (dist[i][k] != 0 && dist[k][j] != 0
+                    if (dist[i][k] != Double.POSITIVE_INFINITY && dist[k][j] != Double.POSITIVE_INFINITY
                             && dist[i][j] > dist[i][k] + dist[k][j]) {
                         dist[i][j] = dist[i][k] + dist[k][j];
                         next[i][j] = next[i][k];

@@ -134,6 +134,11 @@ public class TimeGraphService {
 	    // Create a 2D array to store the time matrix
 	    double[][] timeMatrix = new double[6][6];
 
+	    // Initialize all elements of the time matrix to infinity
+	    for (int i = 0; i < timeMatrix.length; i++) {
+	        Arrays.fill(timeMatrix[i], Double.POSITIVE_INFINITY);
+	    }
+
 	    // Iterate through the directions and calculate the time between each pair of connected streets
 	    List<Directions> directionsTable = directionsInstance.selectAllEntity();
 	    for (Directions directions : directionsTable) {
@@ -156,17 +161,18 @@ public class TimeGraphService {
 	            PublicTransport bus = busInstance.selectEntityById(1); // select a default bus
 	            speed = bus.getAverageSpeed();
 	        }
-	      
+
 	        double time = (distance /(speed/60));
-	       
+
 	        if (index1 < 6 && index2 < 6) { // only populate cells within the 6x6 matrix
-	        	 if(directions.isTrafficLight() == false) { //traffic light logic
-	 	        	time += 2;
-	 	        } else {
-	 	        	time = 0;
-	 	        }
-	            timeMatrix[index1][index2] = time;
-	            timeMatrix[index2][index1] = time;
+	            if(directions.isTrafficLight() == false) { //traffic light logic
+	                time += 2;
+	            } else {
+	                time = Double.POSITIVE_INFINITY;
+	            }
+	            // Set time for indexes and round them to  0.00 format 
+	            timeMatrix[index1][index2] = Math.round(time * 100.0) / 100.0;
+	            timeMatrix[index2][index1] = Math.round(time * 100.0) / 100.0;
 	        }
 	    }
 
