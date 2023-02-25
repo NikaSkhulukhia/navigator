@@ -12,51 +12,33 @@ import com.solvd.navigator.dao.mybatis.CityImpl;
 import com.solvd.navigator.dao.mybatis.DirectionsImpl;
 import com.solvd.navigator.dao.mybatis.PublicTransportDirectionsImpl;
 import com.solvd.navigator.dao.mybatis.PublicTransportImpl;
-//import com.solvd.navigator.dao.mybatis.CarImpl;
 import com.solvd.navigator.dao.mybatis.StreetImpl;
 import com.solvd.navigator.dao.mybatis.StreetLocationImpl;
-import com.solvd.navigator.model.Directions;
-import com.solvd.navigator.model.StreetLocation;
-import com.solvd.navigator.service.FloydService;
-import com.solvd.navigator.service.FloydTimeService;
-import com.solvd.navigator.service.TimeGraphService;
-import com.solvd.navigator.service.FloydService;
-import com.solvd.navigator.service.PublicTransportService;
-import com.solvd.navigator.service.UserInput;
+import com.solvd.navigator.service.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
-
 
     public static void main(String[] args) {
 
 		int startIndex = 0;
 		int endIndex = 0;
-    
-    TimeGraphService tg = new TimeGraphService();
-		TimeGraphService tc = new TimeGraphService();
+        double[][] timeMatrix = null;
+        double[][] distMatrix = null;
 
-		tc.initializeTimeMatrix("car");
-		double[][] timeMatrix = tg.initializeTimeMatrix("car");
-		System.out.println("---------------------------------");
-		for (int i = 0; i < timeMatrix.length; i++) {
-			for (int j = 0; j < timeMatrix[i].length; j++) {
-				System.out.print(timeMatrix[i][j] + " ");
-			}
-			System.out.println();
-		}
+        TimeGraphService tg = new TimeGraphService();
+        DistanceGraphService dg = new DistanceGraphService();
 
-		System.out.println("---------------------------------");
+        try {
+            timeMatrix = tg.initializeTimeMatrix("car");
+            distMatrix = dg.initializeDistanceMatrix();
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
 
         try {
             UserInput userInput = new UserInput();
@@ -66,13 +48,6 @@ public class Main {
         } catch (SQLException e) {
             LOGGER.error("SQLException");
         }
-        // Street Location Verified
-        // Car verified
-        // City verified
-        // Directions verified
-        // PublicTransport verified
-        // PublicTransportDirections
-        // Street Verified
 
         ICarDao carInst = new CarImpl();
         IStreetLocationDao streetLocation = new StreetLocationImpl();
@@ -85,7 +60,6 @@ public class Main {
         try {
             LOGGER.info(street.selectAllEntity());
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -95,70 +69,36 @@ public class Main {
             e1.printStackTrace();
         }
 
-        // List<StreetLocation> allAdreses = strInst.selectAllEntity();
-
-        // 1. ბაზიდან წამოვიღოთ ყველა წვერო თავისი კოორდინატებით.
-        // 2. ამ კოორდინატებით დავითვალოთ დისტანციები, ყველა წვერო ყველა წვეროსთან
-        // დისტანციებს ვითვლით მარტო მეზობელ წვეროებზე. (ანუ თუ navigatordb.directions
-        // თეიბლი არ შეიცავს 2 წვეროს არ ვითვლით)
-        // ამ დისტანციებს ვინახავთ 2 განზომილებიან მასივში int[][] graphDist
-        int[][] graphDist = {{0, 3, 6, Integer.MAX_VALUE}, {3, 0, 2, 1}, {6, 2, 0, 4},
-                {Integer.MAX_VALUE, 1, 4, 0}};
-        // veriko
-
-        // 3. ბაზიდან წამოვიღოთ ყველა წვერო თავისი კოორდინატებით.
-        // 4. ამ კოორდინატებით დავითვალოთ დროები, ყველა წვერო ყველა წვეროსთან
-        // დროებს ვითვლით მარტო მეზობელ წვეროებზე. (ანუ თუ navigatordb.directions თეიბლი
-        // არ შეიცავს 2 წვეროს არ ვითვლით)
-        // დროს ვითვლით დისტანცია / არჩ. ტრანსპ. საშ. სიჩქარეზე +
-        // navigatordb.directions-ში შუქნიშანი არის true 10 წუთი
-        // ამ დროებს ვინახავთ 2 განზომილებიან მასივში int[][] graphTime
-        int[][] graphTime = {{0, 33, 6, Integer.MAX_VALUE}, {33, 0, 22, 1}, {6, 22, 0, 4},
-                {Integer.MAX_VALUE, 1, 4, 0}};
-        // mirian
-
-        // 3. სკანერით ირჩევს იუზერი საწყისი ადრესის ინდექსს და საბოლოო ადრესის ინდექსს
-        int i = 3;
-        int j = 0;
-        // saba
-        // ტრანსპორტი
-        // გთხოვთ აირჩიოთ სასურველი ტრანსპორტი: 1. ბასი 2. ქარი.
-        // სკანერ: 1 2 სხვა რამეზე შეზღუდვა (3, 4 , სფგკჯსეკგჰს)
-
-        // საწყისი ადრესი
-        // ქალაქის არჩევა: 1. თბილისი , 2. ბათუმი
-        // ჩამოწეროს არჩეული ქალაქების ადრესების სია: 1. პეკინის 7, 2. პეკინის 5.
-        // შევინახოთ სადმე
-
-        // საბოლოო ადრესი
-        // ქალაქის არჩევა: 1. თბილისი , 2. ბათუმი
-        // ჩამოწეროს არჩეული ქალაქების ადრესების სია: 1. პეკინის 7, 2. პეკინის 5.
-        // შევინახოთ სადმე
-
-        // ბაგი ბაზასთან და მაპერეთან - ყველა
-        // ავტობუსის შეცვლის ლოგიკა - ნიკა
-
-        FloydService fs = new FloydService();
-        fs.setGraph(graphDist);
+        FloydTimeService fs = new FloydTimeService();
+        PublicTransportService pServ = new PublicTransportService();
+        fs.setGraph(distMatrix);
         fs.setStartIndex(startIndex);
         fs.setEndIndex(endIndex);
         fs.floydWarshall();
         System.out.println(fs.distRes());
-
-        FloydService fsTime = new FloydService();
-        fsTime.setGraph(graphTime);
-        fsTime.setStartIndex(startIndex);
-        fsTime.setEndIndex(endIndex);
-        fsTime.floydWarshall();
-        System.out.println(fsTime.timeRes());
-        
         // public transport service
-      PublicTransportService pServ = new PublicTransportService();
-      try {
-        String changePlan = pServ.getBusUsagePlan();
-        System.out.println(changePlan);
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
+        pServ.setPathIds(fs.getPathIds());
+        try {
+            String changePlan = pServ.getBusUsagePlan();
+            System.out.println(changePlan);
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
+
+        FloydTimeService fsTime1 = new FloydTimeService();
+        PublicTransportService pServ1 = new PublicTransportService();
+        fsTime1.setGraph(timeMatrix);
+        fsTime1.setStartIndex(startIndex);
+        fsTime1.setEndIndex(endIndex);
+        fsTime1.floydWarshall();
+        System.out.println(fsTime1.timeRes());
+        // public transport service
+        pServ1.setPathIds(fsTime1.getPathIds());
+        try {
+            String changePlan = pServ1.getBusUsagePlan();
+            System.out.println(changePlan);
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
     }
 }

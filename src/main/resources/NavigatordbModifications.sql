@@ -67,6 +67,37 @@ INSERT INTO publictransportdirections VALUES(4, 4, 10);
 INSERT INTO publictransportdirections VALUES(5, 5, 13);
 #Batumi Vakhtang Gorgasali Street
 INSERT INTO publictransportdirections VALUES(6, 6, 17);
+# generated statements
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (7, 11);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (2, 7);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (8, 14);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (3, 3);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (5, 10);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (10, 4);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (9, 11);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (8, 16);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (7, 14);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (5, 13);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (8, 6);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (3, 2);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (10, 16);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (1, 2);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (9, 15);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (4, 7);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (5, 8);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (8, 15);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (1, 16);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (3, 10);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (6, 12);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (4, 7);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (10, 1);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (7, 8);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (9, 6);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (2, 12);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (3, 17);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (6, 9);
+INSERT INTO PublicTransportDirections (idPublicTransport, idStreetLocation) VALUES (10, 7);
+
 
 
 -- Street --
