@@ -1,27 +1,26 @@
 package com.solvd.navigator.service;
 
-public class FloydService {
-
+public class FloydTimeService {
 	// graph - initial distances graph
-	private int[][] graph;
-	private int[][] dist;
+	private double[][] graph;
+	private double[][] dist;
 	private int[][] next;
 	private int startIndex;
 	private int endIndex;
 
-	public FloydService() {
+	public FloydTimeService() {
 	}
 
 	public void floydWarshall() {
 		int n = graph.length;
-		dist = new int[n][n];
+		dist = new double[n][n];
 		next = new int[n][n];
 
 		// Initialize dist and next matrices
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				dist[i][j] = graph[i][j];
-				if (graph[i][j] != Integer.MAX_VALUE) {
+				if (graph[i][j] != Double.POSITIVE_INFINITY) {
 					next[i][j] = j;
 				}
 			}
@@ -31,7 +30,7 @@ public class FloydService {
 		for (int k = 0; k < n; k++) {
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
-					if (dist[i][k] != Integer.MAX_VALUE && dist[k][j] != Integer.MAX_VALUE
+					if (dist[i][k] != Double.POSITIVE_INFINITY && dist[k][j] != Double.POSITIVE_INFINITY
 							&& dist[i][j] > dist[i][k] + dist[k][j]) {
 						dist[i][j] = dist[i][k] + dist[k][j];
 						next[i][j] = next[i][k];
@@ -61,7 +60,7 @@ public class FloydService {
 			res += " minutes";
 		if (fromDist)
 			res += " KM";
-		if (dist[startIndex][endIndex] != Integer.MAX_VALUE) {
+		if (dist[startIndex][endIndex] != Double.POSITIVE_INFINITY) {
 			res += ", and the path is [" + startIndex;
 			int current = startIndex;
 			while (current != endIndex) {
@@ -73,11 +72,11 @@ public class FloydService {
 		return res;
 	}
 
-	public int[][] getGraph() {
+	public double[][] getGraph() {
 		return graph;
 	}
 
-	public void setGraph(int[][] graph) {
+	public void setGraph(double[][] graph) {
 		this.graph = graph;
 	}
 
@@ -97,7 +96,7 @@ public class FloydService {
 		this.endIndex = endIndex;
 	}
 
-	public int[][] getDist() {
+	public double[][] getDist() {
 		return dist;
 	}
 
