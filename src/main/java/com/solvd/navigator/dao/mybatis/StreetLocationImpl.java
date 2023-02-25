@@ -102,5 +102,37 @@ public class StreetLocationImpl implements IStreetLocationDao {
 			}
 		}
 		return xyCoordinates;
+    }
+
+	@Override
+	public Integer selectStreetNumberById(int id) throws SQLException {
+		return null;
+	}
+
+	@Override
+	public List<StreetLocation> selectAllStreetNumbers(int id) throws SQLException {
+		List<StreetLocation> streetLocationList = null;
+		try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
+			IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
+			try {
+				streetLocationList = iStreetLocationDao.selectAllStreetNumbers(id);
+			} catch (SQLException e) {
+				LOGGER.error("SQLException", e);
+			}
+		}
+		return streetLocationList;
+	}
+	@Override
+	public List<Integer> selectStreetNumbersByStreetName(String streetName) throws SQLException {
+		List<Integer> streetNumbers = null;
+		try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
+			IStreetLocationDao iStreetLocationDao = sqlSession.getMapper(IStreetLocationDao.class);
+			try {
+				streetNumbers = iStreetLocationDao.selectStreetNumbersByStreetName(streetName);
+			} catch (SQLException e) {
+				LOGGER.error("SQLException", e);
+			}
+		}
+		return streetNumbers;
 	}
 }

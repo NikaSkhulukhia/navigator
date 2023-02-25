@@ -12,6 +12,9 @@
 	<select id="selectAllEntity" resultType="model.Street" resultMap="resultMapStreet">
         SELECT * FROM Street
     </select>
+    <select id="selectStreetsByCity"  resultType="model.Street" resultMap="resultMapStreet">
+        SELECT * FROM Street WHERE idCity = #{id}
+    </select>
 	<insert id="insertEntity">
         INSERT INTO Street VALUES (#{idStreet},#{name},#{idCity})
     </insert>

@@ -1,5 +1,6 @@
 package com.solvd.navigator.dao.mybatis;
 
+import com.solvd.navigator.dao.ICityDao;
 import com.solvd.navigator.dao.IStreetDao;
 import com.solvd.navigator.model.Street;
 import com.solvd.navigator.util.MyBatisUtil;
@@ -84,5 +85,19 @@ public class StreetImpl implements IStreetDao {
                 sqlSession.rollback();
             }
         }
+    }
+
+    @Override
+    public List<Street> selectStreetsByCity(int idCity) {
+        List<Street> streets = null;
+        try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
+            try {
+                IStreetDao iStreetDao = sqlSession.getMapper(IStreetDao.class);
+                streets = iStreetDao.selectStreetsByCity(idCity);
+            } catch (SQLException e) {
+                LOGGER.error("SQLException", e);
+            }
+        }
+        return streets;
     }
 }
