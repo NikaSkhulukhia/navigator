@@ -26,7 +26,7 @@ public class Directions {
 
 	public int getIdDirections() {
 		return idDirections;
-	} 
+	}
 
 	public void setIdDirections(int idDirections) {
 		this.idDirections = idDirections;

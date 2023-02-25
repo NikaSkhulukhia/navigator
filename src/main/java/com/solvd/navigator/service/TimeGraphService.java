@@ -64,7 +64,7 @@ public class TimeGraphService {
 	}
 
 	public double getDistanceByCoordinates(int startStreetID, int endStreetID) {
-		
+
 		try {
 			// Get street locations from database by ID
 			StreetLocation startLocation = streetLocation.getStreetLocationByID(startStreetID);
@@ -120,79 +120,77 @@ public class TimeGraphService {
 
 		return time;
 	}
-	
+
 	// Davamrgvalot shedegi. Usasruloba davamatot
 	public double[][] initializeTimeMatrix(String transportType) throws SQLException {
-	    List<StreetLocation> streetLocations = streetLocation.selectAllEntity();
+		List<StreetLocation> streetLocations = streetLocation.selectAllEntity();
 
-	    // Create a map to store the index of each street location in the time matrix
-	    Map<Integer, Integer> streetIndexMap1 = new HashMap<>();
-	    for (int i = 0; i < streetLocations.size(); i++) {
-	        streetIndexMap1.put(streetLocations.get(i).getIdStreetLocation(), i);
-	    }
+		// Create a map to store the index of each street location in the time matrix
+		Map<Integer, Integer> streetIndexMap1 = new HashMap<>();
+		for (int i = 0; i < streetLocations.size(); i++) {
+			streetIndexMap1.put(streetLocations.get(i).getIdStreetLocation(), i);
+		}
 
-	    // Create a 2D array to store the time matrix
-	    double[][] timeMatrix = new double[6][6];
+		// Create a 2D array to store the time matrix
+		double[][] timeMatrix = new double[6][6];
 
-	    // Initialize all elements of the time matrix to infinity
-	    for (int i = 0; i < timeMatrix.length; i++) {
-	        Arrays.fill(timeMatrix[i], Double.POSITIVE_INFINITY);
-	    }
+		// Initialize all elements of the time matrix to infinity
+		for (int i = 0; i < timeMatrix.length; i++) {
+			Arrays.fill(timeMatrix[i], Double.POSITIVE_INFINITY);
+		}
 
-	    // Iterate through the directions and calculate the time between each pair of connected streets
-	    List<Directions> directionsTable = directionsInstance.selectAllEntity();
-	    for (Directions directions : directionsTable) {
-	        int idStreetLocation1 = directions.getIdStreetLocation1();
-	        int idStreetLocation2 = directions.getIdStreetLocation2();
-	        int index1 = streetIndexMap1.get(idStreetLocation1);
-	        int index2 = streetIndexMap1.get(idStreetLocation2);
+		// Iterate through the directions and calculate the time between each pair of
+		// connected streets
+		List<Directions> directionsTable = directionsInstance.selectAllEntity();
+		for (Directions directions : directionsTable) {
+			int idStreetLocation1 = directions.getIdStreetLocation1();
+			int idStreetLocation2 = directions.getIdStreetLocation2();
+			int index1 = streetIndexMap1.get(idStreetLocation1);
+			int index2 = streetIndexMap1.get(idStreetLocation2);
 
-	        StreetLocation streetLocation1 = streetLocation.getStreetLocationByID(idStreetLocation1);
-	        StreetLocation streetLocation2 = streetLocation.getStreetLocationByID(idStreetLocation2);
+			StreetLocation streetLocation1 = streetLocation.getStreetLocationByID(idStreetLocation1);
+			StreetLocation streetLocation2 = streetLocation.getStreetLocationByID(idStreetLocation2);
 
-	        double distance = calculateDistance(streetLocation1.getxCoordinate(), streetLocation1.getyCoordinate(),
-	                streetLocation2.getxCoordinate(), streetLocation2.getyCoordinate());
+			double distance = calculateDistance(streetLocation1.getxCoordinate(), streetLocation1.getyCoordinate(),
+					streetLocation2.getxCoordinate(), streetLocation2.getyCoordinate());
 
-	        double speed = 0;
-	        if (transportType.equals("car")) {
-	            Car car = carInstance.selectEntityById(1); // select a default car
-	            speed = car.getAverageSpeed();
-	        } else if (transportType.equals("bus")) {
-	            PublicTransport bus = busInstance.selectEntityById(1); // select a default bus
-	            speed = bus.getAverageSpeed();
-	        }
+			double speed = 0;
+			if (transportType.equals("car")) {
+				Car car = carInstance.selectEntityById(1); // select a default car
+				speed = car.getAverageSpeed();
+			} else if (transportType.equals("bus")) {
+				PublicTransport bus = busInstance.selectEntityById(1); // select a default bus
+				speed = bus.getAverageSpeed();
+			}
 
-	        double time = (distance /(speed/60));
+			double time = (distance / (speed / 60));
 
-	        if (index1 < 6 && index2 < 6) { // only populate cells within the 6x6 matrix
-	            if(directions.isTrafficLight() == false) { //traffic light logic
-	                time += 2;
-	            } else {
-	                time = Double.POSITIVE_INFINITY;
-	            }
-	            // Set time for indexes and round them to  0.00 format 
-	            timeMatrix[index1][index2] = Math.round(time * 100.0) / 100.0;
-	            timeMatrix[index2][index1] = Math.round(time * 100.0) / 100.0;
-	        }
-	    }
+			if (index1 < 6 && index2 < 6) { // only populate cells within the 6x6 matrix
+				if (directions.isTrafficLight() == false) { // traffic light logic
+					time += 2;
+				} else {
+					time = Double.POSITIVE_INFINITY;
+				}
+				// Set time for indexes and round them to 0.00 format
+				timeMatrix[index1][index2] = Math.round(time * 100.0) / 100.0;
+				timeMatrix[index2][index1] = Math.round(time * 100.0) / 100.0;
+			}
+		}
 
-	    // Set the diagonal elements of the time matrix to 0
-	    for (int i = 0; i < 6; i++) {
-	        timeMatrix[i][i] = 0;
-	    }
+		// Set the diagonal elements of the time matrix to 0
+		for (int i = 0; i < 6; i++) {
+			timeMatrix[i][i] = 0;
+		}
 
-	    return timeMatrix;
+		return timeMatrix;
 	}
-	
-	
-	
+
 	public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
-	    double dLat = Math.toRadians(lat2 - lat1);
-	    double dLon = Math.toRadians(lon2 - lon1);
-	    double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-	            + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-	            * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-	    return Planets.EARTH.getRadius() * c;
+		double dLat = Math.toRadians(lat2 - lat1);
+		double dLon = Math.toRadians(lon2 - lon1);
+		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lat1))
+				* Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		return Planets.EARTH.getRadius() * c;
 	}
 }

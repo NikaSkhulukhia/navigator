@@ -17,6 +17,7 @@ public class StreetLocationImpl implements IStreetLocationDao {
 
 	StreetLocation streetLocation;
 	StreetLocation xyCoordinates;
+
 	@Override
 	public void insertEntity(StreetLocation entity) throws SQLException {
 		try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {

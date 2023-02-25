@@ -17,7 +17,7 @@
 	<select id="selectEntityById" resultType="model.StreetLocation" resultMap="resultMapStreetLocation1">
         SELECT * FROM StreetLocation WHERE idStreetLocation = #{id}
     </select>
-    <select id="getStreetLocationByID" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
+	<select id="getStreetLocationByID" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
         SELECT xCoordinate, yCoordinate FROM StreetLocation WHERE idStreetLocation = #{id}
     </select>
 	<select id="selectAllEntity" resultType="model.StreetLocation" resultMap="resultMapStreetLocation">
