@@ -92,4 +92,21 @@ public class PublicTransportDirectionsImpl implements IPublicTransportDirections
             }
         }
     }
+
+    @Override
+    public List<Integer> selectAllBusIdsByLocationId(int locationId) throws SQLException {
+        List<Integer> busIds = null;
+        try (SqlSession sqlSession = SESSION_FACTORY.openSession()) {
+            IPublicTransportDirectionsDao iPublicTransportDirectionsDao = sqlSession.getMapper(IPublicTransportDirectionsDao.class);
+            try {
+                busIds = iPublicTransportDirectionsDao.selectAllBusIdsByLocationId(locationId);
+            } catch (SQLException e) {
+                LOGGER.error("SQLException", e);
+            }finally {
+                sqlSession.rollback();
+                sqlSession.close();
+            }
+        }
+        return busIds;
+    }
 }

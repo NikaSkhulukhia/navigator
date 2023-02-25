@@ -16,7 +16,9 @@ import com.solvd.navigator.dao.mybatis.PublicTransportImpl;
 import com.solvd.navigator.dao.mybatis.StreetImpl;
 import com.solvd.navigator.dao.mybatis.StreetLocationImpl;
 import com.solvd.navigator.service.FloydService;
+import com.solvd.navigator.service.PublicTransportService;
 import com.solvd.navigator.service.UserInput;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -124,5 +126,14 @@ public class Main {
         fsTime.setEndIndex(endIndex);
         fsTime.floydWarshall();
         System.out.println(fsTime.timeRes());
+        
+        // public transport service
+      PublicTransportService pServ = new PublicTransportService();
+      try {
+        String changePlan = pServ.getBusUsagePlan();
+        System.out.println(changePlan);
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
     }
 }

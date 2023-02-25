@@ -6,11 +6,18 @@
 		<result property="idPublicTransport" column="idPublicTransport" />
 		<result property="idStreetLocation" column="idStreetLocation" />
 	</resultMap>
+    <resultMap id="resultBusIds" type="java.lang.Integer">
+<!--        <id property="idPublicTransportDirections" column="idPublicTransportDirections" />-->
+        <result property="idPublicTransport" column="idPublicTransport" />
+    </resultMap>
 	<select id="selectAllEntity" resultType="model.PublicTransportDirections" resultMap="result">
         SELECT * FROM PublicTransportDirections
     </select>
 	<select id="selectEntityById" resultType="model.PublicTransportDirections" resultMap="result">
         SELECT * FROM PublicTransportDirections WHERE idPublicTransportDirections =#{id}
+    </select>
+    <select id="selectAllBusIdsByLocationId" resultType="java.lang.Integer" resultMap="resultBusIds">
+        SELECT idPublicTransport FROM PublicTransportDirections WHERE idStreetLocation =#{locationId, jdbcType=INTEGER}
     </select>
 	<insert id="insertEntity">
         INSERT INTO PublicTransportDirections(idPublicTransportDirections, idPublicTransport, idStreetLocation)
