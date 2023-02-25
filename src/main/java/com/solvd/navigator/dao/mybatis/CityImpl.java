@@ -4,8 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.solvd.navigator.dao.ICityDao;
+import com.solvd.navigator.dao.IStreetDao;
 import com.solvd.navigator.model.City;
 
+import com.solvd.navigator.model.Street;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.logging.log4j.LogManager;
@@ -84,4 +86,6 @@ public class CityImpl implements ICityDao {
             }
         }
     }
+
 }
+
