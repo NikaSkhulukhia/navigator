@@ -1,5 +1,8 @@
 package com.solvd.navigator.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FloydService {
 
 	// graph - initial distances graph
@@ -8,6 +11,7 @@ public class FloydService {
 	private int[][] next;
 	private int startIndex;
 	private int endIndex;
+	List<Integer> pathIds;
 
 	public FloydService() {
 	}
@@ -16,6 +20,7 @@ public class FloydService {
 		int n = graph.length;
 		dist = new int[n][n];
 		next = new int[n][n];
+		pathIds = new ArrayList<>();
 
 		// Initialize dist and next matrices
 		for (int i = 0; i < n; i++) {
@@ -63,10 +68,12 @@ public class FloydService {
 			res += " KM";
 		if (dist[startIndex][endIndex] != Integer.MAX_VALUE) {
 			res += ", and the path is [" + startIndex;
+			pathIds.add(startIndex);
 			int current = startIndex;
 			while (current != endIndex) {
 				current = next[current][endIndex];
 				res += " -> " + current;
+				pathIds.add(current);
 			}
 			res += "]";
 		}
@@ -103,5 +110,9 @@ public class FloydService {
 
 	public int[][] getNext() {
 		return next;
+	}
+
+	public List<Integer> getPathIds() {
+		return pathIds;
 	}
 }
