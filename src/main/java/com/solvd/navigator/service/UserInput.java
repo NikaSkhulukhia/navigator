@@ -29,7 +29,9 @@ public class UserInput {
         ////////////////    User select a transport ///////////
 
         int vehicleNum;
-        LOGGER.info("Do you want to travel by bus(1) or car(2)?");
+//        LOGGER.info("Do you want to travel by bus(1) or car(2)?");
+        System.out.println("Do you want to travel by bus(1) or car(2)?");
+
         while (true) {
             while (!scanner.hasNextInt()) {
                 LOGGER.info("Invalid input. Please enter a number between 1 and 2.");
@@ -57,9 +59,12 @@ public class UserInput {
         ////////////////////    User select a start city   //////////////
 
         System.out.println("Select a city for the starting address:");
-        LOGGER.info("1. Batumi");
-        LOGGER.info("2. Tbilisi");
-        LOGGER.info("3. Kutaisi");
+//        LOGGER.info("1. Batumi");
+//        LOGGER.info("2. Tbilisi");
+//        LOGGER.info("3. Kutaisi");
+        System.out.println("1. Batumi");
+        System.out.println("2. Tbilisi");
+        System.out.println("3. Kutaisi");
         int startCityChoice = scanner.nextInt();
         City startCity = null;
 
@@ -91,11 +96,15 @@ public class UserInput {
             System.out.printf("%d. %s\n", i + 1, startStreets.get(i).getName());
         }
 
-        LOGGER.info("Enter the number of the starting street: ");
+//        LOGGER.info("Enter the number of the starting street: ");
+        System.out.println("Enter the number of the starting street: ");
+
         int startStreetNumber = scanner.nextInt();
         Street startStreet = startStreets.get(startStreetNumber - 1);
 
         int startStreetId = startStreet.getIdStreet();
+        LOGGER.error("startStreetId " + startStreetId);
+
 
         ////////////////////    User select a start street number  //////////////
 
@@ -110,18 +119,25 @@ public class UserInput {
         }
 
 
-        LOGGER.info("Enter the number of the starting street: ");
+//        LOGGER.info("Enter the number of the starting street: ");
+        System.out.println("Enter the number of the starting street: ");
+
         int startAddressNumber = scanner.nextInt();
         StreetLocation startAddress = streetNumbers.get(startAddressNumber - 1);
 
         startAddressId = startAddress.getIdStreetLocation();
+        LOGGER.error("startAddressId " + startAddressId);
+
 
         ////////////////////    User select a end city   //////////////
 
         LOGGER.info("Select a city for the ending address:");
-        LOGGER.info("1. Batumi");
-        LOGGER.info("2. Tbilisi");
-        LOGGER.info("3. Kutaisi");
+//        LOGGER.info("1. Batumi");
+//        LOGGER.info("2. Tbilisi");
+//        LOGGER.info("3. Kutaisi");
+        System.out.println("1. Batumi");
+        System.out.println("2. Tbilisi");
+        System.out.println("3. Kutaisi");
         int endCityChoice = scanner.nextInt();
         City endCity = null;
 
@@ -153,11 +169,16 @@ public class UserInput {
             System.out.printf("%d. %s\n", i + 1, endStreets.get(i).getName());
         }
 
-        LOGGER.info("Enter the number of the ending street: ");
+//        LOGGER.info("Enter the number of the ending street: ");
+        System.out.println("Enter the number of the ending street: ");
+
         int endStreetNumber = scanner.nextInt();
         Street endStreet = endStreets.get(endStreetNumber - 1);
 
         int endStreetId = endStreet.getIdStreet();
+        LOGGER.error("endStreetId " + endStreetId);
+
+
 
         ////////////////////    User select a end street number  //////////////
 
@@ -170,16 +191,22 @@ public class UserInput {
             System.out.println(i + 1 + ". " + selectedStreetNumber);
         }
 
-        LOGGER.info("Enter the number of the ending street: ");
+//        LOGGER.info("Enter the number of the ending street: ");
+        System.out.println("Enter the number of the ending street: ");
+
         int endAddressNumber = scanner.nextInt();
-        StreetLocation endAddress = streetNumbers.get(endAddressNumber - 1);
+        StreetLocation endAddress = streetNumbersEnd.get(endAddressNumber - 1);
 
         endAddressId = endAddress.getIdStreetLocation();
+        LOGGER.error("endAddressId " + endAddressId);
+
 
         ////////////////////    Final result   //////////////
 
-        LOGGER.info("Starting address: " + startAddress.getStreetNumber() + ", " + startStreet.getName() + ", " + startCity.getName());
-        LOGGER.info("Ending address: " + endAddress.getStreetNumber() + ", " + endStreet.getName() + ", " + endCity.getName());
+//        LOGGER.info("Starting address: " + startAddress.getStreetNumber() + ", " + startStreet.getName() + ", " + startCity.getName());
+//        LOGGER.info("Ending address: " + endAddress.getStreetNumber() + ", " + endStreet.getName() + ", " + endCity.getName());
+        System.out.println("Starting address: " + startAddress.getStreetNumber() + ", " + startStreet.getName() + ", " + startCity.getName());
+        System.out.println("Ending address: " + endAddress.getStreetNumber() + ", " + endStreet.getName() + ", " + endCity.getName());
 
     }
 
