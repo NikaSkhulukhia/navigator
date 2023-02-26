@@ -33,11 +33,17 @@ public class PublicTransportService {
         IStreetDao street = new StreetImpl();
         String result = "";
         int currentBusId = 0;
+        LOGGER.error("pathIds: " + pathIds.toString());
         for(int i = 0; i < pathIds.size() - 1; i++) {
             int currentStationId = pathIds.get(i);
             int nextStationId = pathIds.get(i+1);
+            LOGGER.error("currentStationId: " + currentStationId);
+            LOGGER.error("nextStationId: " + nextStationId);
             List<Integer> currentStationBusIds = publicTransportDirections.selectAllBusIdsByLocationId(currentStationId);
             List<Integer> nextStationBusIds = publicTransportDirections.selectAllBusIdsByLocationId(nextStationId);
+            LOGGER.error("currentStationBusIds: " + currentStationBusIds.toString());
+            LOGGER.error("nextStationBusIds: " + nextStationBusIds.toString());
+
             if (currentBusId != 0 && currentStationBusIds.contains(currentBusId) && nextStationBusIds.contains(currentBusId)) {
                 continue;
             }
@@ -45,9 +51,16 @@ public class PublicTransportService {
             for (int currentStationBusId : currentStationBusIds) {
                 if (nextStationBusIds.contains(currentStationBusId)) {
                     currentBusId = currentStationBusId;
+                    LOGGER.error("currentBusId: " + currentBusId);
                     StreetLocation addressObj = streetLocation.selectEntityById(currentStationId);
+                    LOGGER.error("addressObj: " + addressObj.toString());
+
                     Street addressStreetObj = street.selectEntityById(addressObj.getIdStreet());
+                    LOGGER.error("addressStreetObj: " + addressStreetObj.toString());
+
                     PublicTransport busObj = publicTransport.selectEntityById(currentBusId);
+                    LOGGER.error("busObj: " + busObj.toString());
+
                     String addressStr = addressObj.getStreetNumber() + ", " + addressStreetObj.getName();
                     int busNumber = busObj.getPublicTransportNumber();
                     result += "At the station: " + addressStr + " take the bus #: " + busNumber + " ---> ";

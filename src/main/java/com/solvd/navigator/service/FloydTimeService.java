@@ -1,9 +1,14 @@
 package com.solvd.navigator.service;
 
+import com.solvd.navigator.main.Main;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FloydTimeService {
+	private static final Logger LOGGER = LogManager.getLogger(Main.class);
 	// graph - initial distances graph
 	private double[][] graph;
 	private double[][] dist;
@@ -22,15 +27,38 @@ public class FloydTimeService {
 		next = new int[n][n];
 		pathIds = new ArrayList<>();
 
+
 		// Initialize dist and next matrices
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				dist[i][j] = graph[i][j];
 				if (graph[i][j] != Double.POSITIVE_INFINITY) {
-					next[i][j] = j;
+					next[i][j] = j+1;
 				}
+				else next[i][j] = -1;
+
 			}
 		}
+
+		for(int i = 0; i < n; i++) {
+			String nextrow = "";
+		  for(int j = 0; j < n; j++) {
+			  nextrow += next[i][j] + "  ";
+		  }
+			LOGGER.error( "next : " + nextrow);
+		}
+		LOGGER.error( "");
+		LOGGER.error( "");
+
+
+		for(int i = 0; i < n; i++) {
+			String nextrow = "";
+			for(int j = 0; j < n; j++) {
+				nextrow += dist[i][j] + "  ";
+			}
+			LOGGER.error( "dist : " + nextrow);
+		}
+
 
 		// Compute the shortest paths and update next matrix
 		for (int k = 0; k < n; k++) {
@@ -44,6 +72,16 @@ public class FloydTimeService {
 				}
 			}
 		}
+
+		for(int i = 0; i < n; i++) {
+			String nextrow = "";
+			for(int j = 0; j < n; j++) {
+				nextrow += next[i][j] + "  ";
+			}
+			LOGGER.error( " final next : " + nextrow);
+		}
+		LOGGER.error( "");
+		LOGGER.error( "");
 	}
 
 	public String timeRes() {

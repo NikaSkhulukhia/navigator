@@ -33,6 +33,7 @@ public class Main {
         TimeGraphService tg = new TimeGraphService();
         DistanceGraphService dg = new DistanceGraphService();
 
+
         try {
             timeMatrix = tg.initializeTimeMatrix("car");
             distMatrix = dg.initializeDistanceMatrix();
@@ -49,6 +50,26 @@ public class Main {
             LOGGER.error("SQLException");
         }
 
+
+        // //////////
+        for(int i = 0; i < timeMatrix.length; i++) {
+            String nextrow = "";
+            for(int j = 0; j < timeMatrix.length; j++) {
+                nextrow += timeMatrix[i][j] + "  ";
+            }
+            LOGGER.error( "timeMatrix : " + nextrow);
+        }
+        LOGGER.error( "");
+        for(int i = 0; i < distMatrix.length; i++) {
+            String nextrow = "";
+            for(int j = 0; j < distMatrix.length; j++) {
+                nextrow += distMatrix[i][j] + "  ";
+            }
+            LOGGER.error( "timeMatrix : " + nextrow);
+        }
+        LOGGER.error( "");
+
+
         ICarDao carInst = new CarImpl();
         IStreetLocationDao streetLocation = new StreetLocationImpl();
         ICityDao city = new CityImpl();
@@ -56,18 +77,6 @@ public class Main {
         IPublicTransportDao publicTransport = new PublicTransportImpl();
         IPublicTransportDirectionsDao publicTransportDirections = new PublicTransportDirectionsImpl();
         IStreetDao street = new StreetImpl();
-
-        try {
-            LOGGER.info(street.selectAllEntity());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            System.out.println(publicTransportDirections.selectAllEntity());
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
 
         FloydTimeService fs = new FloydTimeService();
         PublicTransportService pServ = new PublicTransportService();
