@@ -1,5 +1,4 @@
-package com.solvd.navigator.main;
-
+ package com.solvd.navigator.main;
 import com.solvd.navigator.dao.ICarDao;
 import com.solvd.navigator.dao.ICityDao;
 import com.solvd.navigator.dao.IDirectionsDao;
@@ -15,24 +14,24 @@ import com.solvd.navigator.dao.mybatis.PublicTransportImpl;
 import com.solvd.navigator.dao.mybatis.StreetImpl;
 import com.solvd.navigator.dao.mybatis.StreetLocationImpl;
 import com.solvd.navigator.service.*;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.sql.SQLException;
-public class Main {
-    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+public class Main {
+	private static final Logger LOGGER = LogManager.getLogger(Main.class);
+
+	public static void main(String[] args) {
 
 		int startIndex = 0;
 		int endIndex = 0;
+
         double[][] timeMatrix = null;
         double[][] distMatrix = null;
         UserInput userInput = null;
 
-        TimeGraphService tg = new TimeGraphService();
-        DistanceGraphService dg = new DistanceGraphService();
+		TimeGraphService tg = new TimeGraphService();
+		DistanceGraphService dg = new DistanceGraphService();
 
 
         try {
@@ -70,14 +69,13 @@ public class Main {
         }
 //        LOGGER.error("");
 
-
-        ICarDao carInst = new CarImpl();
-        IStreetLocationDao streetLocation = new StreetLocationImpl();
-        ICityDao city = new CityImpl();
-        IDirectionsDao directions = new DirectionsImpl();
-        IPublicTransportDao publicTransport = new PublicTransportImpl();
-        IPublicTransportDirectionsDao publicTransportDirections = new PublicTransportDirectionsImpl();
-        IStreetDao street = new StreetImpl();
+		ICarDao carInst = new CarImpl();
+		IStreetLocationDao streetLocation = new StreetLocationImpl();
+		ICityDao city = new CityImpl();
+		IDirectionsDao directions = new DirectionsImpl();
+		IPublicTransportDao publicTransport = new PublicTransportImpl();
+		IPublicTransportDirectionsDao publicTransportDirections = new PublicTransportDirectionsImpl();
+		IStreetDao street = new StreetImpl();
 
         FloydTimeService fs = new FloydTimeService();
         PublicTransportService pServ = new PublicTransportService();

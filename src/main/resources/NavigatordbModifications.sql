@@ -40,6 +40,181 @@ INSERT INTO directions VALUES(21, 6, 6, False);
 INSERT INTO directions VALUES(22, 6, 5, False);
 INSERT INTO directions VALUES(23, 6, 4, False);
 
+INSERT INTO directions VALUES(24, 7, 7, False);
+INSERT INTO directions VALUES(25, 7, 2, False);
+INSERT INTO directions VALUES(26, 7, 3, False);
+INSERT INTO directions VALUES(27, 7, 5, False);
+INSERT INTO directions VALUES(28, 7, 6, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 8, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 15, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 16, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 19, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(7, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 8, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 1, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 4, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 6, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(8, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 3, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(9, 19, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 1, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 4, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 15, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 16, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(10, 17, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 3, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 5, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 8, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 14, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(11, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 1, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 3, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 4, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 5, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 8, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 15, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 16, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(12, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 1, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 3, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 6, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 8, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 14, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 16, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(13, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 14, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 5, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 6, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 8, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 19, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 14, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 1, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(14, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 15, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 3, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 14, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 16, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(15, 19, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 16, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 1, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 4, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 8, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 15, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(16, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 1, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 14, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 15, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 19, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(17, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 3, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 10, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 11, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 14, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 15, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 19, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(18, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 19, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 3, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 7, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 12, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 16, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 17, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(19, 20, False);
+
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(20, 20, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(20, 2, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(20, 6, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(20, 9, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(20, 13, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(20, 18, False);
+INSERT INTO directions (idStreetLocation1, idStreetLocation2, trafficLight) VALUES(20, 19, False);
+
+
+
+
+
 -- Public Transport --
 SELECT * FROM publictransport;
 INSERT INTO publictransport VALUES(1, 1, 40);
@@ -150,5 +325,50 @@ INSERT INTO streetlocation VALUES(13, 1, 41.64288, 41.64797, 6);
 INSERT INTO streetlocation VALUES(14, 19, 41.64322, 41.64614, 6);
 INSERT INTO streetlocation VALUES(15, 23, 41.64389, 41.64404, 6);
 INSERT INTO streetlocation VALUES(16, 109, 41.64228, 41.63527, 6);
-#Vakhtang Gorgasali Street
+#Batumi Vakhtang Gorgasali Street
 INSERT INTO streetlocation VALUES(17, 4, 41.64999, 41.64262, 7);
+
+#Tbilisi David Agmashenebeli Avenue
+INSERT INTO streetlocation VALUES(18, 2, 41.70628, 44.79994, 8);
+INSERT INTO streetlocation VALUES(19, 15, 41.70357, 44.80391, 8);
+INSERT INTO streetlocation VALUES(20, 105, 41.71236, 44.79608, 8);
+INSERT INTO streetlocation VALUES(21, 135, 41.71555, 44.79333, 8);
+#Tbilisi Pekini Street
+INSERT INTO streetlocation VALUES(22, 20, 41.72335, 44.77228, 9);
+INSERT INTO streetlocation VALUES(23, 35, 41.72782, 44.76847, 9);
+INSERT INTO streetlocation VALUES(24, 55, 41.73056, 44.76760, 9);
+#Tbilisi Alexander Kazbegi Avenue
+INSERT INTO streetlocation VALUES(25, 10, 41.72602, 44.76476, 10);
+INSERT INTO streetlocation VALUES(26, 45, 41.72442, 44.74481, 10);
+INSERT INTO streetlocation VALUES(27, 63, 41.72398, 44.73946, 10);
+#Tbilisi Erekle Tatishvili Street
+INSERT INTO streetlocation VALUES(28, 31, 41.70534, 44.78330, 11);
+INSERT INTO streetlocation VALUES(29, 105, 41.70493, 44.78300, 11);
+INSERT INTO streetlocation VALUES(30, 3, 41.70726, 44.78448, 11);
+#Tbilisi Ilia Chavchavadze Street
+INSERT INTO streetlocation VALUES(31, 17, 41.68899, 44.77665, 12);
+INSERT INTO streetlocation VALUES(32, 49, 41.68975, 44.77557, 12);
+#Tbilisi Tsotne Dadiani Street
+INSERT INTO streetlocation VALUES(33, 2, 41.73577, 44.79650, 13);
+#Tbilisi Ksani Street
+INSERT INTO streetlocation VALUES(34, 4, 41.76673, 44.78985, 14);
+
+#Kutaisi Bagrati Street
+INSERT INTO streetlocation VALUES(35, 4, 42.27637, 42.70274, 15);
+INSERT INTO streetlocation VALUES(36, 14, 42.27616, 42.70371, 15);
+INSERT INTO streetlocation VALUES(37, 22, 42.27706, 42.70286, 15);
+#Kutaisi Grishashvili Street
+INSERT INTO streetlocation VALUES(38, 33, 42.26781, 42.69734, 16);
+INSERT INTO streetlocation VALUES(39, 52, 42.26761, 42.69506, 16);
+INSERT INTO streetlocation VALUES(40, 14, 42.26800, 42.69705, 16);
+#Kutaisi Gogebashvili Street
+INSERT INTO streetlocation VALUES(41, 1, 42.26975, 42.70617, 17);
+INSERT INTO streetlocation VALUES(42, 29, 42.26860, 42.71033, 17);
+#Kutaisi David Agmashenebeli Street
+INSERT INTO streetlocation VALUES(43, 6, 42.26796, 42.70385, 18);
+INSERT INTO streetlocation VALUES(44, 22, 42.26159, 42.70257, 18);
+#Kutaisi Nikea Street
+INSERT INTO streetlocation VALUES(45, 1, 42.24517, 42.69903, 19);
+INSERT INTO streetlocation VALUES(46, 5, 42.24867, 42.69454, 19);
+#Kutaisi Sulkhan Saba Avenue
+INSERT INTO streetlocation VALUES(47, 9, 42.26744, 42.71791, 20);
