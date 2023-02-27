@@ -56,10 +56,10 @@ public class FloydTimeService {
 		  for(int j = 0; j < n; j++) {
 			  nextrow += next[i][j] + "  ";
 		  }
-			LOGGER.error( "next : " + nextrow);
+//			LOGGER.error( "next : " + nextrow);
 		}
-		LOGGER.error( "");
-		LOGGER.error( "");
+//		LOGGER.error( "");
+//		LOGGER.error( "");
 
 
 		for(int i = 0; i < n; i++) {
@@ -67,7 +67,7 @@ public class FloydTimeService {
 			for(int j = 0; j < n; j++) {
 				nextrow += dist[i][j] + "  ";
 			}
-			LOGGER.error( "dist : " + nextrow);
+//			LOGGER.error( "dist : " + nextrow);
 		}
 
 
@@ -89,10 +89,10 @@ public class FloydTimeService {
 			for(int j = 0; j < n; j++) {
 				nextrow += next[i][j] + "  ";
 			}
-			LOGGER.error( " final next : " + nextrow);
+//			LOGGER.error( " final next : " + nextrow);
 		}
-		LOGGER.error( "");
-		LOGGER.error( "");
+//		LOGGER.error( "");
+//		LOGGER.error( "");
 	}
 
 	public String timeRes() throws SQLException {
