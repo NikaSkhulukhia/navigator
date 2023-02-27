@@ -1,9 +1,20 @@
 package com.solvd.navigator.service;
 
+import com.solvd.navigator.dao.IPublicTransportDao;
+import com.solvd.navigator.dao.IPublicTransportDirectionsDao;
+import com.solvd.navigator.dao.IStreetDao;
+import com.solvd.navigator.dao.IStreetLocationDao;
+import com.solvd.navigator.dao.mybatis.PublicTransportDirectionsImpl;
+import com.solvd.navigator.dao.mybatis.PublicTransportImpl;
+import com.solvd.navigator.dao.mybatis.StreetImpl;
+import com.solvd.navigator.dao.mybatis.StreetLocationImpl;
 import com.solvd.navigator.main.Main;
+import com.solvd.navigator.model.Street;
+import com.solvd.navigator.model.StreetLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,33 +95,47 @@ public class FloydTimeService {
 		LOGGER.error( "");
 	}
 
-	public String timeRes() {
+	public String timeRes() throws SQLException {
 		String res = "";
 		res += "best path by time ";
 		res = resultDistAndPath(res, true, false);
 		return res;
 	}
 
-	public String distRes() {
+	public String distRes() throws SQLException {
 		String res = "";
 		res += "best path by distance ";
 		res = resultDistAndPath(res, false, true);
 		return res;
 	}
 
-	public String resultDistAndPath(String res, boolean fromTime, boolean fromDist) {
-		res += "from address " + startIndex + " to address " + endIndex + " is " + dist[startIndex][endIndex];
+	public String resultDistAndPath(String res, boolean fromTime, boolean fromDist) throws SQLException {
+		IStreetLocationDao streetLocation = new StreetLocationImpl();
+		IStreetDao street = new StreetImpl();
+
+		StreetLocation addressObjStart = streetLocation.selectEntityById(startIndex);
+		Street addressStreetObjStart = street.selectEntityById(addressObjStart.getIdStreet());
+		String addressStrStart = addressObjStart.getStreetNumber() + ", " + addressStreetObjStart.getName();
+
+		StreetLocation addressObjEnd = streetLocation.selectEntityById(endIndex);
+		Street addressStreetObjEnd = street.selectEntityById(addressObjEnd.getIdStreet());
+		String addressStrEnd = addressObjEnd.getStreetNumber() + ", " + addressStreetObjEnd.getName();
+
+		res += "from address " + addressStrStart + " to address " + addressStrEnd + " is " + dist[startIndex][endIndex];
 		if (fromTime)
 			res += " minutes";
 		if (fromDist)
 			res += " KM";
 		if (dist[startIndex][endIndex] != Double.POSITIVE_INFINITY) {
-			res += ", and the path is [" + startIndex;
+			res += ", and the path is [" + addressStrStart;
 			pathIds.add(startIndex);
 			int current = startIndex;
 			while (current != endIndex) {
 				current = next[current][endIndex];
-				res += " -> " + current;
+				StreetLocation addressObjCurrent = streetLocation.selectEntityById(current);
+				Street addressStreetObjCurrent = street.selectEntityById(addressObjCurrent.getIdStreet());
+				String addressStrCurrent = addressObjCurrent.getStreetNumber() + ", " + addressStreetObjCurrent.getName();
+				res += " -> " + addressStrCurrent;
 				pathIds.add(current);
 			}
 			res += "]";

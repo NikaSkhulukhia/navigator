@@ -84,7 +84,11 @@ public class Main {
         fs.setStartIndex(startIndex);
         fs.setEndIndex(endIndex);
         fs.floydWarshall();
-        System.out.println(fs.distRes());
+        try {
+            System.out.println(fs.distRes());
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
         // public transport service
         pServ.setPathIds(fs.getPathIds());
         try {
@@ -100,7 +104,11 @@ public class Main {
         fsTime1.setStartIndex(startIndex);
         fsTime1.setEndIndex(endIndex);
         fsTime1.floydWarshall();
-        System.out.println(fsTime1.timeRes());
+        try {
+            System.out.println(fsTime1.timeRes());
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
         // public transport service
         pServ1.setPathIds(fsTime1.getPathIds());
         try {
