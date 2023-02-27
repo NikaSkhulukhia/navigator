@@ -25,27 +25,49 @@ public class Main {
 
 		int startIndex = 0;
 		int endIndex = 0;
-		double[][] timeMatrix = null;
-		double[][] distMatrix = null;
+
+        double[][] timeMatrix = null;
+        double[][] distMatrix = null;
+        UserInput userInput = null;
 
 		TimeGraphService tg = new TimeGraphService();
 		DistanceGraphService dg = new DistanceGraphService();
 
-		try {
-			timeMatrix = tg.initializeTimeMatrix("car");
-			distMatrix = dg.initializeDistanceMatrix();
-		} catch (SQLException e) {
-			LOGGER.error(e.getMessage());
-		}
 
-		try {
-			UserInput userInput = new UserInput();
-			userInput.input();
+        try {
+            timeMatrix = tg.initializeTimeMatrix("car");
+            distMatrix = dg.initializeDistanceMatrix();
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
+
+        try {
+            userInput = new UserInput();
+            userInput.input();
 			startIndex = userInput.getStartAddressId();
 			endIndex = userInput.getEndAddressId();
-		} catch (SQLException e) {
-			LOGGER.error("SQLException");
-		}
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
+
+
+        // //////////
+        for(int i = 0; i < timeMatrix.length; i++) {
+            String nextrow = "";
+            for(int j = 0; j < timeMatrix.length; j++) {
+                nextrow += timeMatrix[i][j] + "  ";
+            }
+//            LOGGER.error( "timeMatrix : " + nextrow);
+        }
+//        LOGGER.error( "");
+        for(int i = 0; i < distMatrix.length; i++) {
+            String nextrow = "";
+            for(int j = 0; j < distMatrix.length; j++) {
+                nextrow += distMatrix[i][j] + "  ";
+            }
+//            LOGGER.error( "timeMatrix : " + nextrow);
+        }
+//        LOGGER.error("");
 
 		ICarDao carInst = new CarImpl();
 		IStreetLocationDao streetLocation = new StreetLocationImpl();
@@ -55,48 +77,49 @@ public class Main {
 		IPublicTransportDirectionsDao publicTransportDirections = new PublicTransportDirectionsImpl();
 		IStreetDao street = new StreetImpl();
 
-		try {
-			LOGGER.info(street.selectAllEntity());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+        FloydTimeService fs = new FloydTimeService();
+        PublicTransportService pServ = new PublicTransportService();
+        fs.setGraph(distMatrix);
+        fs.setStartIndex(startIndex);
+        fs.setEndIndex(endIndex);
+        fs.floydWarshall();
+        try {
+            System.out.println(fs.distRes());
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
+        // public transport service
+        if (userInput.getVehicleNum() == 1) {
+            pServ.setPathIds(fs.getPathIds());
+            try {
+                String changePlan = pServ.getBusUsagePlan();
+                System.out.println(changePlan);
+            } catch (SQLException e) {
+                LOGGER.error(e.getMessage());
+            }
+        }
 
-		try {
-			System.out.println(publicTransportDirections.selectAllEntity());
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+        FloydTimeService fsTime1 = new FloydTimeService();
+        PublicTransportService pServ1 = new PublicTransportService();
+        fsTime1.setGraph(timeMatrix);
+        fsTime1.setStartIndex(startIndex);
+        fsTime1.setEndIndex(endIndex);
+        fsTime1.floydWarshall();
+        try {
+            System.out.println(fsTime1.timeRes());
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
+        }
+        // public transport service
+        if (userInput.getVehicleNum() == 1) {
+            pServ1.setPathIds(fsTime1.getPathIds());
+            try {
+                String changePlan = pServ1.getBusUsagePlan();
+                System.out.println(changePlan);
+            } catch (SQLException e) {
+                LOGGER.error(e.getMessage());
+            }
+        }
 
-		FloydTimeService fs = new FloydTimeService();
-		PublicTransportService pServ = new PublicTransportService();
-		fs.setGraph(distMatrix);
-		fs.setStartIndex(startIndex);
-		fs.setEndIndex(endIndex);
-		fs.floydWarshall();
-		System.out.println(fs.distRes());
-		// public transport service
-		pServ.setPathIds(fs.getPathIds());
-		try {
-			String changePlan = pServ.getBusUsagePlan();
-			System.out.println(changePlan);
-		} catch (SQLException e) {
-			LOGGER.error(e.getMessage());
-		}
-
-		FloydTimeService fsTime1 = new FloydTimeService();
-		PublicTransportService pServ1 = new PublicTransportService();
-		fsTime1.setGraph(timeMatrix);
-		fsTime1.setStartIndex(startIndex);
-		fsTime1.setEndIndex(endIndex);
-		fsTime1.floydWarshall();
-		System.out.println(fsTime1.timeRes());
-		// public transport service
-		pServ1.setPathIds(fsTime1.getPathIds());
-		try {
-			String changePlan = pServ1.getBusUsagePlan();
-			System.out.println(changePlan);
-		} catch (SQLException e) {
-			LOGGER.error(e.getMessage());
-		}
-	}
+    }
 }
